@@ -1,0 +1,26 @@
+{
+    "name": "portfolio",
+    "version": "1.0.0",
+    "description": "A statically generated portfolio",
+    "author": "Aurélien Kochalski <aurelien.kochalski@gmail.com> (https://aurelien.kochalski.fr)",
+    "license": "TODO",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start"
+    },
+    "dependencies": {
+        "classnames": "^2.2.6",
+        "next": "9.3.5",
+        "react": "16.13.1",
+        "react-dom": "16.13.1"
+    },
+    "devDependencies": {
+        "eslint": "^7.7.0",
+        "eslint-plugin-react": "^7.20.6",
+        "eslint-plugin-tailwind": "^0.2.0",
+        "postcss-preset-env": "^6.7.0",
+        "sass": "^1.26.10",
+        "tailwindcss": "^1.6.2"
+    }
+}
