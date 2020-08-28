@@ -6,4 +6,7 @@
 body {
     color: $colorPrimary;
     background-color: $colorBackgroundPrimary;
+
+    background-image: url("/images/background.png");
+    background-size: contain;
 }

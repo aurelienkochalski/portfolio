@@ -1,0 +1,17 @@
+$lineWidth: 48px;
+
+.title {
+    @apply transition-all duration-200 ease-in-out;
+
+    &::before {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        background-color: white;
+        height: 2px;
+        width: 0px;
+        margin-right: 12px + 8px;
+        margin-top: -4px;
+        @apply transition-all duration-1000 ease-out;
+    }
+}

@@ -1,0 +1,29 @@
+@import "../styles/variables.scss";
+
+.resumeItem {
+}
+
+.progress {
+    $barHeight: 4px;
+    $capWidth: 4px;
+    $capOffset: 4px;
+
+    height: $barHeight;
+    background: rgba(#888888, 0.4);
+
+    .progression {
+        background: $colorPrimary;
+        transition: width 0.7s ease-in-out;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: -$capOffset / 2;
+            right: -$capWidth / 2;
+            height: $barHeight + $capOffset;
+            width: $capWidth;
+            background-color: $colorPrimary;
+            border-radius: $barHeight / 2;
+        }
+    }
+}
