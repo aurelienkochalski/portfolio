@@ -27,6 +27,7 @@
         "eslint-plugin-react": "^7.20.6",
         "eslint-plugin-tailwind": "^0.2.0",
         "fontmin": "^0.9.8",
+        "iconfont-plugin-webpack": "^1.1.4",
         "postcss-preset-env": "^6.7.0",
         "sass": "^1.26.10",
         "tailwindcss": "^1.6.2"

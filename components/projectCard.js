@@ -2,6 +2,18 @@ import styles from "./projectCard.module.scss";
 
 import Link from "next/link";
 
+// TODO : make it global (we will certainly need it for the project page)
+function sanitizeTechnology(str) {
+
+    // Specific technology replacement
+    str = str.replace(/#/g, "sharp");
+
+    // Global sanitizing (lowercase, white space triming, specialchars replacement)
+    str = str.trim().toLowerCase().replace(/[^a-z0-9]/g, "");
+
+    return str;
+}
+
 export default class ProjectCard extends React.Component {
 
     constructor(props) {
@@ -14,6 +26,15 @@ export default class ProjectCard extends React.Component {
             styles.card,
             "max-w-sm"
         );
+
+        var technologiesIcons = this.props.project.technologies.map(function (technology, index) {
+            return <div
+                key={technology}
+                className={"opacity-75 text-lg inline-block m-1 fonticon icon-" + sanitizeTechnology(technology)}
+                title={technology}>
+                <span>{technology}</span>
+            </div>;
+        });
 
         return (
             <div
@@ -32,7 +53,7 @@ export default class ProjectCard extends React.Component {
 
                         {/* Project technologies list */}
                         <div className="absolute bottom-0 px-6 py-4">
-                            {this.props.project.technologies}
+                            {technologiesIcons}
                         </div>
 
                         {/* Project preview image */}
