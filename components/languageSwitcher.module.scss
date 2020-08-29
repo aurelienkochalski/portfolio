@@ -1,0 +1,28 @@
+.container {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+
+    .link {
+        opacity: 0.25;
+        border-bottom: 0px solid #ffffff00;
+        transition: all 0.2s ease-in-out, color 0.4s ease-in-out, border-color 0.2s ease-in, border-width 0.1s ease-in;
+
+        &:hover {
+            border-bottom: 2px solid #ffffffff;
+            opacity: 0.75;
+        }
+    }
+
+    .linkActive {
+        opacity: 1;
+        &:hover {
+            border-bottom: 0px solid #ffffffff;
+            opacity: 1;
+        }
+    }
+
+    .separator {
+        opacity: 0.25;
+    }
+}

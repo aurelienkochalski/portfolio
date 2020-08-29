@@ -7,6 +7,7 @@ import SectionTitle from "../components/sectionTitle";
 import ProjectCard from "../components/projectCard";
 import ResumeItem from "../components/resume";
 import ContactItem from "../components/contactItem";
+import LanguageSwitcher from "../components/languageSwitcher";
 
 // FontAwesome import
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,7 +39,46 @@ export async function getStaticProps() {
 export default class Home extends React.Component {
 
     constructor(props) {
+
         super(props);
+
+        // Initial state
+        this.state = {
+            activeLanguage: "en"
+        };
+
+        // Events binding
+        this.handleLanguageChange = this.handleLanguageChange.bind(this);
+    }
+
+    handleLanguageChange(language) {
+
+        // We change language only if it's not already the current language
+        if (language != this.state.activeLanguage){
+            this.setState({
+                activeLanguage: language
+            });
+        }
+    }
+
+    getTranslation(object, key) {
+
+        var language = this.state.activeLanguage;
+
+        if (language == "en") {
+            return object[key];
+        }
+        else {
+            if (object.translations != undefined &&
+                object.translations[language] != undefined &&
+                object.translations[language][key] != undefined) {
+                return object.translations[language][key];
+            }
+            else {
+                console.warn("translation not found for", language, "-", key, ", fallback to default translation");
+                return object[key];
+            }
+        }
     }
 
     render() {
@@ -79,21 +119,21 @@ export default class Home extends React.Component {
                 return (
                     <ResumeItem
                         key={index}
-                        title={skillElement.title}
-                        description={skillElement.description}
+                        title={this.getTranslation(skillElement, "title")}
+                        description={this.getTranslation(skillElement, "description")}
                         progression={skillElement.progression}>
-                        {skillElement.text} {/* TODO Use state instead of component method */}
+                        {this.getTranslation(skillElement, "text")} {/* TODO Use state instead of component method? */}
                     </ResumeItem>
                 );
-            });
+            }, this); // NOTE : we bind this to the map callback to keep the scope for translating
 
             return (
                 <React.Fragment key={skillGroup.title}>
-                    <h5 className="mb-5 font-bold uppercase">{skillGroup.title}</h5>
+                    <h5 className="mb-5 font-bold uppercase">{this.getTranslation(skillGroup, "title")}</h5>
                     {skillsElementsRender}
                 </React.Fragment>
             );
-        });
+        }, this); // NOTE : we bind this to the map callback to keep the scope for translating
 
         return (
             <Layout>
@@ -105,20 +145,20 @@ export default class Home extends React.Component {
                 <div className="container mx-auto">
 
                     <h1 className="text-4xl leading-tight tracking-wide text-center sm:text-left sm:text-5xl md:text-6xl">{infos.name}</h1>
-                    <h2 className="text-lg tracking-wider text-center uppercase sm:text-left sm:text-xl md:text-2xl">- {infos.job} -</h2>
-                    <p className="mt-10">{infos.description}</p>
+                    <h2 className="text-lg tracking-wider text-center uppercase sm:text-left sm:text-xl md:text-2xl">- {this.getTranslation(infos, "job")} -</h2>
+                    <p className="mt-10">{this.getTranslation(infos, "description")}</p>
 
                     <div>
 
                         <SectionBlock>
-                            <SectionTitle text="Projects" />
+                            <SectionTitle text={this.getTranslation(infos, "sectionProjects")} />
                             <div className="overflow-visible grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 lg:grid-cols-4 lg:gap-12">
                                 {projectsList}
                             </div>
                         </SectionBlock>
 
                         <SectionBlock>
-                            <SectionTitle text="Resume" />
+                            <SectionTitle text={this.getTranslation(infos, "sectionResume")} />
 
                             {/* TODO : separate in columns in this order : Dev skills, languages | personnal skills, interests | experience, education*/}
                             <div className="flex flex-col mb-4 md:flex-row">
@@ -135,7 +175,7 @@ export default class Home extends React.Component {
                         </SectionBlock>
 
                         <SectionBlock>
-                            <SectionTitle text="Contact" />
+                            <SectionTitle text={this.getTranslation(infos, "sectionContact")} />
 
                             {/* TODO : temporary picture, change it */}
                             <img
@@ -155,6 +195,14 @@ export default class Home extends React.Component {
                         and
                         <FontAwesomeIcon icon={faCoffee} className="icon icon-coffee" />
                     </footer>
+
+                    <LanguageSwitcher
+                        languages={languages}
+                        defaultLanguage={languages[0]}
+                        onLanguageChange={(language) => {
+                            this.handleLanguageChange(language);
+                        }}
+                    />
 
                 </div>
 
