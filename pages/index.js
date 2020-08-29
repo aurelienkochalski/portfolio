@@ -6,6 +6,19 @@ import SectionBlock from "../components/sectionBlock";
 import SectionTitle from "../components/sectionTitle";
 import ProjectCard from "../components/projectCard";
 import ResumeItem from "../components/resume";
+import ContactItem from "../components/contactItem";
+
+// FontAwesome import
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { faHeart, faCoffee, faEnvelope, faPhone, faMobileAlt, faAt, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+// We associate a contact method to a specific icon
+const icons = {
+    "email": faAt,
+    "phone": faPhone,
+    "address": faMapMarkerAlt,
+    "linkedin": faLinkedinIn
+};
 
 // This function gets called at build time on server-side only.
 export async function getStaticProps() {
@@ -43,6 +56,19 @@ export default class Home extends React.Component {
                 key={project.title}
                 index={index}
                 project={project}></ProjectCard>;
+        });
+
+        var contactsList = contacts.map(function (contact, index) {
+
+            // If no icon was found for this contact method, we return null so that the component will not trigger the icon rendering
+            var icon = (icons.hasOwnProperty(contact.method) ? icons[contact.method] : null);
+
+            return <ContactItem
+                key={contact.value}
+                index={index}
+                link={contact.link}
+                text={contact.value}
+                icon={icon} />;
         });
 
         var skillsList = skills.map(function (skillGroup, index) {
@@ -108,7 +134,27 @@ export default class Home extends React.Component {
                             </div>
                         </SectionBlock>
 
+                        <SectionBlock>
+                            <SectionTitle text="Contact" />
+
+                            {/* TODO : temporary picture, change it */}
+                            <img
+                                className="inline w-20 h-20 mr-6 rounded-full"
+                                src="/images/poonicorn.png"
+                            />
+
+                            {contactsList}
+
+                        </SectionBlock>
+
                     </div>
+
+                    <footer className="fixed block px-2 py-1 text-xs text-right rounded-t-sm">
+                        Made with
+                        <FontAwesomeIcon icon={faHeart} className="icon icon-heart" />
+                        and
+                        <FontAwesomeIcon icon={faCoffee} className="icon icon-coffee" />
+                    </footer>
 
                 </div>
 

@@ -12,3 +12,31 @@ body {
     font-family: $fontFamily;
     font-weight: 100;
 }
+
+footer {
+    backdrop-filter: blur(10px);
+    bottom: 0;
+    right: 8px;
+    background-color: $colorBackgroundPrimaryTransparent;
+
+    .icon {
+        display: inline-block;
+        margin: 0 4px;
+        margin-top: -2px;
+        width: 12px;
+    }
+    .icon-heart {
+        width: 12px;
+    }
+    .icon-coffee {
+        width: 15px;
+    }
+}
+
+.icon {
+    display: inline-block;
+    margin: 0 4px;
+    margin-top: -2px;
+    width: 20px;
+    margin-right: 8px;
+}
