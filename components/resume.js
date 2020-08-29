@@ -1,5 +1,10 @@
 import styles from "./resume.module.scss";
 
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
+const animationDelayBeforeStarting = 0;
+const animationStaggering = 40;
+
 export default function ResumeItem(props) {
 
     var classes = classNames(
@@ -14,7 +19,14 @@ export default function ResumeItem(props) {
                 <b className="block mb-1 text-sm">{props.title}</b>
             }
 
-            <em className="block mb-1 text-sm not-italic text-normal">{props.children}</em>
+            <TransitionGroup>
+                <CSSTransition
+                    key={props.children}
+                    timeout={animationDelayBeforeStarting + props.index * animationStaggering}
+                >
+                    <em className="block mb-1 text-sm not-italic text-normal">{props.children}</em>
+                </CSSTransition >
+            </TransitionGroup>
 
             {props.progression &&
                 <ResumeProgress progression={props.progression}/>

@@ -8,7 +8,10 @@ export default function SectionTitle(props) {
     );
 
     return (
-        <span className={classes}>
+        <span
+            className={classes}
+            data-aos='fade-right' data-aos-delay="0"
+        >
             [{props.text}]
         </span>
     );

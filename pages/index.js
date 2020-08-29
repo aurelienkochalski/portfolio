@@ -21,6 +21,11 @@ const icons = {
     "linkedin": faLinkedinIn
 };
 
+import { CSSTransition, TransitionGroup  } from "react-transition-group";
+
+const animationDelayBeforeStarting = 200;
+const animationStaggering = 100;
+
 // This function gets called at build time on server-side only.
 export async function getStaticProps() {
 
@@ -129,7 +134,13 @@ export default class Home extends React.Component {
 
             return (
                 <React.Fragment key={skillGroup.title}>
-                    <h5 className="mb-5 font-bold uppercase">{this.getTranslation(skillGroup, "title")}</h5>
+                    <TransitionGroup>
+                        <CSSTransition
+                            timeout={0 + 0 * 40}
+                        >
+                            <h5 className="mb-5 font-bold uppercase">{this.getTranslation(skillGroup, "title")}</h5>
+                        </CSSTransition >
+                    </TransitionGroup>
                     {skillsElementsRender}
                 </React.Fragment>
             );
@@ -162,13 +173,22 @@ export default class Home extends React.Component {
 
                             {/* TODO : separate in columns in this order : Dev skills, languages | personnal skills, interests | experience, education*/}
                             <div className="flex flex-col mb-4 md:flex-row">
-                                <div className="w-full mr-8 md:w-1/3">
+                                <div
+                                    className="w-full mr-8 md:w-1/3"
+                                    data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (0 * animationStaggering)}
+                                >
                                     {skillsList}
                                 </div>
-                                <div className="w-full mr-8 md:w-1/3">
+                                <div
+                                    className="w-full mr-8 md:w-1/3"
+                                    data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (1 * animationStaggering)}
+                                >
 
                                 </div>
-                                <div className="w-full mr-8 md:w-1/3">
+                                <div
+                                    className="w-full mr-8 md:w-1/3"
+                                    data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (2 * animationStaggering)}
+                                >
 
                                 </div>
                             </div>
@@ -181,6 +201,7 @@ export default class Home extends React.Component {
                             <img
                                 className="inline w-20 h-20 mr-6 rounded-full"
                                 src="/images/poonicorn.png"
+                                data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (0 * animationStaggering)}
                             />
 
                             {contactsList}
