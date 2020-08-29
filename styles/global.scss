@@ -1,4 +1,5 @@
 @import "variables";
+@import "typography";
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -6,7 +7,8 @@
 body {
     color: $colorPrimary;
     background-color: $colorBackgroundPrimary;
-
     background-image: url("/images/background.png");
     background-size: contain;
+    font-family: $fontFamily;
+    font-weight: 100;
 }

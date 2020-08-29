@@ -1,0 +1,24 @@
+@font-face {
+    font-family: "Custom";
+    src: url("/fonts/custom-medium.ttf") format("truetype");
+    font-weight: normal;
+}
+@font-face {
+    font-family: "Custom";
+    src: url("/fonts/custom-light.ttf") format("truetype");
+    font-weight: 100;
+}
+@font-face {
+    font-family: "Custom";
+    src: url("/fonts/custom-black.ttf") format("truetype");
+    font-weight: bold;
+}
+
+// TODO : load other font format
+// @font-face {font-family: "Custom;
+//   src: url("/fonts/custom-medium.eot"); /* IE9*/
+//   src: url("/fonts/custom-medium.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+//   url("/fonts/custom-medium.woff2") format("woff2"), /* chrome、firefox */
+//   url("/fonts/custom-medium.woff") format("woff"), /* chrome、firefox */
+//   url("/fonts/custom-medium.svg#Custom") format("svg"); /* iOS 4.1- */
+// }
