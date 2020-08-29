@@ -8,6 +8,7 @@
         "dev": "next dev",
         "build": "npm run font && next build",
         "start": "next start",
+        "build-static": "npm run font && next build && next export",
         "font": "node ./utils/fontOptimizer"
     },
     "dependencies": {

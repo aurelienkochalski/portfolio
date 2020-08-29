@@ -18,4 +18,7 @@ module.exports = {
     },
     variants: {},
     plugins: [],
+    future: {
+        removeDeprecatedGapUtilities: true // opt-in to remove the deprecated gap utilities (will not be necessary in tailwind v2.0+)
+    }
 };

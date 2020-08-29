@@ -42,7 +42,7 @@ export default class ProjectCard extends React.Component {
                 data-aos='fade-up' data-aos-delay={200 + (this.props.index * 100)}
             >
                 {/* TODO : it seems that next prefetch (activated only in prod) don't prefetch the pictures... */}
-                <Link href="#">
+                <Link href="/project/[project]" as={`/project/${this.props.project.title}`}>
                     <a>
 
                         {/* Project title and subtitle */}
