@@ -61,3 +61,18 @@ export const ResumeProgress = (props) => {
         </div>
     );
 };
+
+// Props validation
+import PropTypes from "prop-types";
+
+ResumeItem.propTypes = {
+    index: PropTypes.number,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    progression: PropTypes.number,
+    children: PropTypes.node.isRequired
+};
+
+ResumeProgress.propTypes = {
+    progression: PropTypes.number
+};
