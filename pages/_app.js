@@ -10,6 +10,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react"; // To use an effect hook without transforming the component into a class
 
+// Special utility to store the scroll position in session storage and restore it when navigating
+import useScrollRestoration from "../utils/scrollRestoration";
+
 export default function App({ Component, pageProps, router }) {
 
     // Similar to componentDidMount & componentDidUpdate
@@ -20,6 +23,9 @@ export default function App({ Component, pageProps, router }) {
             mirror: true // whether elements should animate out while scrolling past them (doesn't seems to work...)
         });
     });
+
+    // To restore scroll position
+    useScrollRestoration(router);
 
     return (
         <Component {...pageProps} />
