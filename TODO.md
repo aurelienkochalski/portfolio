@@ -1,6 +1,5 @@
 ## TODO
-- Add all projects to DB
-- Create a DB dump
+- Add a tooltip on technologies 
 - Apply props validation on more components (see ResumeProgress)
 - Add the useful FA icons inside font-icons and remove all FA dependencies
 - Translate the projects
@@ -9,6 +8,7 @@
 - Add an obfuscator
 - Add unit tests 
 - Add e2e tests
+- Try fully static generation : https://nextjs.org/docs/advanced-features/static-html-export#caveats
 - Deploy on push
 - SEO : meta, google preview
 - SEO : lighthouse audit

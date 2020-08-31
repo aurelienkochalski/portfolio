@@ -22,12 +22,20 @@ export default class ProjectView extends React.Component {
                 element = <img
                     key={media}
                     className={classes}
-                    src={"/images/" + media}
+                    src={"/images/project/" + media}
                 />;
             }
             else if (media.match(/mp4/g)) { // Videos
+
+                // We build the poster uri base on the media name  (the poster has the same name with a "-preview" suffix but it's in the /images folder with jpg extension)
+                const poster = "/images/project/" + media.replace(".mp4", "-preview.jpg");
+
                 // TODO : add the attribute poster="TODO.jpg"
-                element = <video key={media} className={classes} muted autoPlay loop="loop">
+                element = <video
+                    key={media}
+                    className={classes}
+                    poster={poster}
+                    muted autoPlay loop="loop">
                     <source src={"/videos/" + media} type="video/mp4"/>
                 </video>;
             }
@@ -47,7 +55,8 @@ export default class ProjectView extends React.Component {
                     <h1>{this.props.title}</h1>
                     <h2>{this.props.category}</h2>
                     <p>{this.props.description}</p>
-                    <em>Technologies : {this.props.technologies}</em>
+                    <p><em>Collaboration : {this.props.authors}</em></p>
+                    <p><em>Technologies : {this.props.technologies}</em></p>
                 </div>
 
                 <div className="md:w-2/3">

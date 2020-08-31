@@ -19,7 +19,7 @@ export async function getAll() {
     let dataContacts = await client.db(DB_NAME).collection("contacts").find({}).toArray();
     data.contacts = dataContacts;
 
-    let dataProjects = await client.db(DB_NAME).collection("projects").find({}).toArray();
+    let dataProjects = await client.db(DB_NAME).collection("projects").find({}).sort({ order : -1 }).toArray();
     data.projects = dataProjects;
 
     let dataSkills = await client.db(DB_NAME).collection("skills").find({}).sort({ order : 1 }).toArray();
@@ -37,11 +37,12 @@ export async function getProjects() {
     return data;
 }
 
-// Retrieve a project by title
-export async function getProject(projectTitle) {
+// Retrieve a project by slug
+export async function getProject(projectSlug) {
 
     if (!client.isConnected()) await client.connect();
 
-    let data = await client.db(DB_NAME).collection("projects").findOne({title: projectTitle});
+    let data = await client.db(DB_NAME).collection("projects").findOne({ slug: projectSlug });
+
     return JSON.stringify(data);
 }

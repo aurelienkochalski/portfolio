@@ -1,18 +1,10 @@
 import styles from "./projectCard.module.scss";
 
 import Link from "next/link";
+import { sanitizeTechnology } from "../utils/tools";
 
-// TODO : make it global (we will certainly need it for the project page)
-function sanitizeTechnology(str) {
-
-    // Specific technology replacement
-    str = str.replace(/#/g, "sharp");
-
-    // Global sanitizing (lowercase, white space triming, specialchars replacement)
-    str = str.trim().toLowerCase().replace(/[^a-z0-9]/g, "");
-
-    return str;
-}
+const animationDelayBeforeStarting = 200;
+const animationStaggering = 50;
 
 export default class ProjectCard extends React.Component {
 
@@ -39,10 +31,10 @@ export default class ProjectCard extends React.Component {
         return (
             <div
                 className={classes}
-                data-aos='fade-up' data-aos-delay={200 + (this.props.index * 100)}
+                data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (this.props.index * animationStaggering)}
             >
                 {/* TODO : it seems that next prefetch (activated only in prod) don't prefetch the pictures... */}
-                <Link href="/project/[project]" as={`/project/${this.props.project.title}`}>
+                <Link href="/project/[project]" as={`/project/${this.props.project.slug}`}>
                     <a>
 
                         {/* Project title and subtitle */}
@@ -57,7 +49,13 @@ export default class ProjectCard extends React.Component {
                         </div>
 
                         {/* Project preview image */}
-                        <div className={styles.preview}></div>
+                        <div
+                            className={classNames(
+                                styles.preview,
+                                "absolute overflow-hidden w-full h-full top-0 left-0"
+                            )}
+                            style={{ backgroundImage: "url(/images/project/" + this.props.project.preview + ")" }}
+                        ></div>
 
                     </a>
                 </Link>

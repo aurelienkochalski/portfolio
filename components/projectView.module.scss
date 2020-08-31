@@ -22,15 +22,16 @@ $gallerySpacing: 2rem;
             width: 100%;
         }
 
+        // TODO : Issue on some pages, the odd/even utility doesn't work properly
         .small {
             width: 50%;
             margin-left: 0;
             margin-right: 0;
 
-            &:nth-child(even) {
+            &:nth-of-type(even) {
                 padding-left: $gallerySpacing / 2;
             }
-            &:nth-child(odd) {
+            &:nth-of-type(odd) {
                 padding-right: $gallerySpacing / 2;
             }
         }

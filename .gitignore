@@ -3,6 +3,11 @@
 /out/
 /build
 
+# local
+/db
+/public/videos/
+/public/images/project/
+
 # testing
 /coverage
 
