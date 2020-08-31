@@ -1,6 +1,30 @@
 $__iconfont__data: map-merge(if(global_variable_exists('__iconfont__data'), $__iconfont__data, ()), (
 	"font-icons": (
-		"unity": "\ea01"
+		"bootstrap": "\ea01",
+		"cordova": "\ea02",
+		"css": "\ea03",
+		"css3": "\ea04",
+		"drupal": "\ea05",
+		"electron": "\ea06",
+		"ezpublish": "\ea07",
+		"facebook": "\ea08",
+		"gulp": "\ea09",
+		"html": "\ea0a",
+		"html5": "\ea0b",
+		"jquery": "\ea0c",
+		"json": "\ea0d",
+		"less": "\ea0e",
+		"mailchimp": "\ea0f",
+		"next": "\ea10",
+		"nodejs": "\ea11",
+		"react": "\ea12",
+		"sass": "\ea13",
+		"threejs": "\ea14",
+		"twig": "\ea15",
+		"unity": "\ea16",
+		"webgl": "\ea17",
+		"webpack": "\ea18",
+		"wordpress": "\ea19"
 	)
 ));
 

@@ -1,5 +1,5 @@
 const IconfontPlugin = require("iconfont-plugin-webpack");
-const customCssTemplate = require("./font_svg/customCssTemplate.js");
+const customCssTemplate = require("./font_svg/_customCssTemplate.js");
 
 module.exports = {
     devIndicators: {
