@@ -5,7 +5,6 @@
 - Fix styling
 
 - Apply props validation on more components (see ResumeProgress)
-- Add the useful FA icons inside font-icons and remove all FA dependencies
 - Translate the projects
 - Animated triangles
 - Add brotli compression (with a gzip fallback)

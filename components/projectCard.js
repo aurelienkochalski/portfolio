@@ -39,9 +39,9 @@ export default class ProjectCard extends React.Component {
                     <a>
 
                         {/* Project title and subtitle */}
-                        <div className="px-6 py-4">
-                            <div className="text-xl font-bold uppercase">{this.props.project.title}</div>
-                            <p className="text-xs text-gray-400">{this.props.project.category}</p>
+                        <div className="px-6 py-5">
+                            <div className="text-lg font-bold uppercase">{this.props.project.title}</div>
+                            <p className="text-sm text-gray-400">{this.props.project.category}</p>
                         </div>
 
                         {/* Project technologies list */}

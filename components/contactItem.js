@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 const animationDelayBeforeStarting = 200;
 const animationStaggering = 50;
 
@@ -15,7 +13,7 @@ export default function ContactItem(props) {
             data-aos='fade-up'
             data-aos-delay={animationDelayBeforeStarting + (props.index * animationStaggering)}
         >
-            {props.icon && <FontAwesomeIcon icon={props.icon} className="icon" />}
+            {props.icon && <span className={"pr-1 text-xl align-baseline fonticon icon-" + props.icon}></span>}
             {props.text}
         </a>
     );

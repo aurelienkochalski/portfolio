@@ -19,7 +19,7 @@ export async function getAll() {
     let dataContacts = await client.db(DB_NAME).collection("contacts").find({}).toArray();
     data.contacts = dataContacts;
 
-    let dataProjects = await client.db(DB_NAME).collection("projects").find({}).sort({ order : -1 }).toArray();
+    let dataProjects = await client.db(DB_NAME).collection("projects").find({hidden : false}).sort({ order : -1 }).toArray();
     data.projects = dataProjects;
 
     let dataSkills = await client.db(DB_NAME).collection("skills").find({}).sort({ order : 1 }).toArray();

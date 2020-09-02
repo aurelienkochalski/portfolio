@@ -11,18 +11,6 @@ import { ResumeBlock, ResumeColumn } from "../components/resume";
 import ContactItem from "../components/contactItem";
 import LanguageSwitcher from "../components/languageSwitcher";
 
-// FontAwesome import
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
-import { faHeart, faCoffee, faEnvelope, faPhone, faMobileAlt, faAt, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-// We associate a contact method to a specific icon
-const icons = {
-    "email": faAt,
-    "phone": faPhone,
-    "address": faMapMarkerAlt,
-    "linkedin": faLinkedinIn
-};
-
 import { CSSTransition, TransitionGroup  } from "react-transition-group";
 
 const animationDelayBeforeStarting = 200;
@@ -98,16 +86,12 @@ export default class Home extends React.Component {
         });
 
         var contactsList = contacts.map(function (contact, index) {
-
-            // If no icon was found for this contact method, we return null so that the component will not trigger the icon rendering
-            var icon = (icons.hasOwnProperty(contact.method) ? icons[contact.method] : null);
-
             return <ContactItem
                 key={contact.value}
                 index={index}
                 link={contact.link}
                 text={contact.value}
-                icon={icon} />;
+                icon={contact.method} />;
         });
 
         // We dynamically split the skills data in multiple array with an utility function to render inside multiple columns
@@ -175,9 +159,9 @@ export default class Home extends React.Component {
 
                     <footer className="fixed block px-2 py-1 text-xs text-right rounded-t-sm">
                         Made with
-                        <FontAwesomeIcon icon={faHeart} className="icon icon-heart" />
+                        <span className={"fonticon icon-heart"}></span>
                         and
-                        <FontAwesomeIcon icon={faCoffee} className="icon icon-coffee" />
+                        <span className={"fonticon icon-coffee"}></span>
                     </footer>
 
                     <LanguageSwitcher

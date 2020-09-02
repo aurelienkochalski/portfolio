@@ -20,26 +20,11 @@ footer {
     right: 8px;
     background-color: $colorBackgroundPrimaryTransparent;
 
-    .icon {
-        display: inline-block;
-        margin: 0 4px;
-        margin-top: -2px;
-        width: 12px;
+    .fonticon {
+        position: relative;
+        bottom: -1px;
+        padding: 0 4px;
     }
-    .icon-heart {
-        width: 12px;
-    }
-    .icon-coffee {
-        width: 15px;
-    }
-}
-
-.icon {
-    display: inline-block;
-    margin: 0 4px;
-    margin-top: -2px;
-    width: 20px;
-    margin-right: 8px;
 }
 
 // TODO TEMP : it doesn't works in the sectionTitle module css (because the aos-animate class is added later, at runtime)
@@ -91,5 +76,9 @@ section .aos-animate[class*="sectionTitle"] {
     &.place-top::after {
         border-top-color: $color !important;
         bottom: -7px !important;
+    }
+
+    &.place-bottom::before {
+        border-bottom-color: $color !important;
     }
 }
