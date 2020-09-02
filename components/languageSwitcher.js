@@ -19,8 +19,6 @@ export default class LanguageSwitcher extends React.Component {
         // If it's not already the current language
         if (language != this.state.activeLanguage){
 
-            console.log("new language " + language);
-
             this.setState({
                 activeLanguage: language
             });

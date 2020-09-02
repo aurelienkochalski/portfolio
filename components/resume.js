@@ -5,7 +5,45 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 const animationDelayBeforeStarting = 0;
 const animationStaggering = 40;
 
-export default function ResumeItem(props) {
+export function ResumeColumn(props) {
+
+    var classes = classNames(
+        "w-full mr-8",
+        "md:w-1/" + props.columns
+    );
+    return (
+        <div
+            className={classes}
+            data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (0 * animationStaggering)}
+        >
+            {props.children}
+        </div>
+    );
+}
+
+export function ResumeBlock(props) {
+
+    const skillElements = props.elements.map(function (skillElement, index) {
+        return (
+            <ResumeItem
+                key={index}
+                title={skillElement.title}
+                description={skillElement.description}
+                progression={skillElement.progression}>
+                {skillElement.text}
+            </ResumeItem>
+        );
+    });
+
+    return (
+        <>
+            <h5 className="mb-5 font-bold uppercase">{props.title}</h5>
+            {skillElements}
+        </>
+    );
+}
+
+export function ResumeItem(props) {
 
     var classes = classNames(
         styles.resumeItem,
@@ -40,8 +78,7 @@ export default function ResumeItem(props) {
     );
 }
 
-// NOTE : this is a named export
-export const ResumeProgress = (props) => {
+export function ResumeProgress(props) {
 
     var classesProgress = classNames(
         styles.progress,
@@ -60,10 +97,20 @@ export const ResumeProgress = (props) => {
             ></span>
         </div>
     );
-};
+}
 
 // Props validation
 import PropTypes from "prop-types";
+
+ResumeColumn.propTypes = {
+    columns: PropTypes.number.isRequired,
+    children: PropTypes.node.isRequired
+};
+
+ResumeBlock.propTypes = {
+    title: PropTypes.string.isRequired,
+    elements: PropTypes.array.isRequired
+};
 
 ResumeItem.propTypes = {
     index: PropTypes.number,

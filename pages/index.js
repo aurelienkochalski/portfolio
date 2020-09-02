@@ -1,11 +1,12 @@
 import { getAll } from "../middleware/database";
 
 import Head from "next/head";
+import { splitArray, buildTranslations } from "../utils/tools";
 import Layout, { siteTitle } from "../components/layout";
 import SectionBlock from "../components/sectionBlock";
 import SectionTitle from "../components/sectionTitle";
 import ProjectCard from "../components/projectCard";
-import ResumeItem from "../components/resume";
+import { ResumeBlock, ResumeColumn } from "../components/resume";
 import ContactItem from "../components/contactItem";
 import LanguageSwitcher from "../components/languageSwitcher";
 
@@ -47,9 +48,19 @@ export default class Home extends React.Component {
 
         super(props);
 
+        const languages = this.props.data.infos.languages;
+        const defaultLanguage = languages[0];
+
+        // We build the array containing all translations
+        this.dataTranslations = []; // NOTE : We declare it as a class variable in order to be accessed inside handleLanguageChange()
+        languages.map(function (language, index) {
+            this.dataTranslations[language] = buildTranslations({ ...this.props.data }, language); // We keep the data source untouched by copying it
+        }, this);
+
         // Initial state
         this.state = {
-            activeLanguage: "en"
+            activeLanguage: defaultLanguage, // Current language
+            dataTranslated: this.dataTranslations[defaultLanguage], // A reference to the data translated in the current language
         };
 
         // Events binding
@@ -61,44 +72,26 @@ export default class Home extends React.Component {
         // We change language only if it's not already the current language
         if (language != this.state.activeLanguage){
             this.setState({
-                activeLanguage: language
+                activeLanguage: language,
+                dataTranslated: this.dataTranslations[language]
             });
-        }
-    }
-
-    getTranslation(object, key) {
-
-        var language = this.state.activeLanguage;
-
-        if (language == "en") {
-            return object[key];
-        }
-        else {
-            if (object.translations != undefined &&
-                object.translations[language] != undefined &&
-                object.translations[language][key] != undefined) {
-                return object.translations[language][key];
-            }
-            else {
-                console.warn("translation not found for", language, "-", key, ", fallback to default translation");
-                return object[key];
-            }
         }
     }
 
     render() {
 
         // Data assignation helpers
-        const infos = this.props.data.infos;
+        const data = this.state.dataTranslated;
+        const infos = data.infos;
         const languages = infos.languages;
-        const contacts = this.props.data.contacts;
-        const projects = this.props.data.projects;
-        const skills = this.props.data.skills;
+        const contacts = data.contacts;
+        const projects = data.projects;
+        const skills = data.skills;
 
         // TODO : transform those into components
         var projectsList = projects.map(function (project, index) {
             return <ProjectCard
-                key={project.title}
+                key={project._id}
                 index={index}
                 project={project}></ProjectCard>;
         });
@@ -116,35 +109,26 @@ export default class Home extends React.Component {
                 icon={icon} />;
         });
 
-        var skillsList = skills.map(function (skillGroup, index) {
+        // We dynamically split the skills data in multiple array with an utility function to render inside multiple columns
+        const COLUMNS_SKILLS = 3;
+        const skillsSplitted = splitArray(skills, Math.ceil(skills.length / COLUMNS_SKILLS));
 
-            var skillsElements = skillGroup.elements;
+        var skillsColumns = skillsSplitted.map(function (skillColumn, index) {
 
-            var skillsElementsRender = skillsElements.map(function (skillElement, index) {
+            var skillsBlock = skillColumn.map(function (skillGroup, index) {
                 return (
-                    <ResumeItem
-                        key={index}
-                        title={this.getTranslation(skillElement, "title")}
-                        description={this.getTranslation(skillElement, "description")}
-                        progression={skillElement.progression}>
-                        {this.getTranslation(skillElement, "text")} {/* TODO Use state instead of component method? */}
-                    </ResumeItem>
+                    <ResumeBlock
+                        key={skillGroup._id}
+                        title={skillGroup.title}
+                        elements={skillGroup.elements}
+                    />
                 );
-            }, this); // NOTE : we bind this to the map callback to keep the scope for translating
+            });
 
             return (
-                <React.Fragment key={skillGroup.title}>
-                    <TransitionGroup>
-                        <CSSTransition
-                            timeout={0 + 0 * 40}
-                        >
-                            <h5 className="mb-5 font-bold uppercase">{this.getTranslation(skillGroup, "title")}</h5>
-                        </CSSTransition >
-                    </TransitionGroup>
-                    {skillsElementsRender}
-                </React.Fragment>
+                <ResumeColumn columns={COLUMNS_SKILLS}>{skillsBlock}</ResumeColumn>
             );
-        }, this); // NOTE : we bind this to the map callback to keep the scope for translating
+        });
 
         return (
             <Layout>
@@ -156,56 +140,34 @@ export default class Home extends React.Component {
                 <div className="container mx-auto">
 
                     <h1 className="text-4xl leading-tight tracking-wide text-center sm:text-left sm:text-5xl md:text-6xl">{infos.name}</h1>
-                    <h2 className="text-lg tracking-wider text-center uppercase sm:text-left sm:text-xl md:text-2xl">- {this.getTranslation(infos, "job")} -</h2>
-                    <p className="mt-10">{this.getTranslation(infos, "description")}</p>
+                    <h2 className="text-lg tracking-wider text-center uppercase sm:text-left sm:text-xl md:text-2xl">- {infos.job} -</h2>
+                    <p className="mt-10">{infos.description}</p>
 
                     <div>
 
                         <SectionBlock>
-                            <SectionTitle text={this.getTranslation(infos, "sectionProjects")} />
+                            <SectionTitle text={infos.sectionProjects} />
                             <div className="overflow-visible grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 lg:grid-cols-4 lg:gap-12">
                                 {projectsList}
                             </div>
                         </SectionBlock>
 
                         <SectionBlock>
-                            <SectionTitle text={this.getTranslation(infos, "sectionResume")} />
-
-                            {/* TODO : separate in columns in this order : Dev skills, languages | personnal skills, interests | experience, education*/}
+                            <SectionTitle text={infos.sectionResume} />
                             <div className="flex flex-col mb-4 md:flex-row">
-                                <div
-                                    className="w-full mr-8 md:w-1/3"
-                                    data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (0 * animationStaggering)}
-                                >
-                                    {skillsList}
-                                </div>
-                                <div
-                                    className="w-full mr-8 md:w-1/3"
-                                    data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (1 * animationStaggering)}
-                                >
-
-                                </div>
-                                <div
-                                    className="w-full mr-8 md:w-1/3"
-                                    data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (2 * animationStaggering)}
-                                >
-
-                                </div>
+                                {skillsColumns}
                             </div>
                         </SectionBlock>
 
                         <SectionBlock>
-                            <SectionTitle text={this.getTranslation(infos, "sectionContact")} />
-
+                            <SectionTitle text={infos.sectionContact} />
                             {/* TODO : temporary picture, change it */}
                             <img
                                 className="inline w-20 h-20 mr-6 rounded-full"
                                 src="/images/poonicorn.png"
                                 data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (0 * animationStaggering)}
                             />
-
                             {contactsList}
-
                         </SectionBlock>
 
                     </div>
