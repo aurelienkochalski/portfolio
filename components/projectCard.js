@@ -23,7 +23,8 @@ export default class ProjectCard extends React.Component {
             return <div
                 key={technology}
                 className={"opacity-75 text-lg inline-block m-1 fonticon icon-" + sanitizeTechnology(technology)}
-                title={technology}>
+                data-tip={technology}
+            >
                 <span>{technology}</span>
             </div>;
         });

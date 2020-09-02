@@ -76,3 +76,20 @@ section .aos-animate[class*="sectionTitle"] {
   transition: all 1000ms ease-in-out;
   */
 }
+
+.tooltip {
+    $color: rgba(
+        $color: #000000,
+        $alpha: 0.6,
+    );
+
+    font-size: 1rem !important;
+    padding: 2px 8px !important;
+    background-color: $color !important;
+    //backdrop-filter: blur(4px) !important;
+
+    &.place-top::after {
+        border-top-color: $color !important;
+        bottom: -7px !important;
+    }
+}

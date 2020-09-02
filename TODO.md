@@ -1,7 +1,9 @@
 ## TODO
 - Check each project subpage images
 - Add a color scheme based on project type
-- Add a tooltip on technologies 
+- Add about section
+- Fix styling
+
 - Apply props validation on more components (see ResumeProgress)
 - Add the useful FA icons inside font-icons and remove all FA dependencies
 - Translate the projects

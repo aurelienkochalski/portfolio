@@ -9,7 +9,7 @@ $accentHeight: 24px;
     cursor: pointer;
     overflow: hidden;
 
-    text-shadow: 1px 1px 3px rgba($color: #000000, $alpha: 0.4);
+    text-shadow: 1px 0px 5px rgba($color: #000000, $alpha: 0.7);
     &::before {
         content: "";
         width: $accentWidth;

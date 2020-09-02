@@ -1,6 +1,7 @@
 import { getAll } from "../middleware/database";
 
 import Head from "next/head";
+import ReactTooltip from "react-tooltip";
 import { splitArray, buildTranslations } from "../utils/tools";
 import Layout, { siteTitle } from "../components/layout";
 import SectionBlock from "../components/sectionBlock";
@@ -188,6 +189,8 @@ export default class Home extends React.Component {
                     />
 
                 </div>
+
+                <ReactTooltip place="top" effect="solid" className="tooltip" uuid="tooltip"/>
 
             </Layout>
         );
