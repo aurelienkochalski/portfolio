@@ -2,8 +2,8 @@ import styles from "./resume.module.scss";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-const animationDelayBeforeStarting = 0;
-const animationStaggering = 40;
+const animationDelayBeforeStarting = 200;
+const animationStaggering = 200;
 
 export function ResumeColumn(props) {
 
@@ -13,8 +13,9 @@ export function ResumeColumn(props) {
     );
     return (
         <div
+            key={props.index}
             className={classes}
-            data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (0 * animationStaggering)}
+            data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (props.index * animationStaggering)}
         >
             {props.children}
         </div>

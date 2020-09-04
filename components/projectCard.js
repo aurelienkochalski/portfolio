@@ -4,16 +4,17 @@ import Link from "next/link";
 import { sanitizeTechnology } from "../utils/tools";
 
 const animationDelayBeforeStarting = 200;
-const animationStaggering = 50;
+const animationStaggering = 200;
 
 export default class ProjectCard extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.projectCategory = "category-" + sanitizeTechnology(this.props.project.category); // We set this on the constructor, to not retrigger it on language change and prevent className replacement (that would erase the aniamted classe)
     }
 
     render() {
-
         var technologiesIcons = this.props.project.technologies.map(function (technology, index) {
             return <div
                 key={technology}
@@ -28,36 +29,39 @@ export default class ProjectCard extends React.Component {
             <div
                 className={classNames(
                     styles.card,
-                    "max-w-sm"
+                    "max-w-sm h-full",
+                    this.projectCategory
                 )}
                 data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (this.props.index * animationStaggering)}
             >
-                {/* TODO : it seems that next prefetch (activated only in prod) don't prefetch the pictures... */}
-                <Link href="/project/[project]" as={`/project/${this.props.project.slug}`}>
-                    <a>
+                <div className="relative h-full overflow-hidden">
+                    {/* TODO : it seems that next prefetch (activated only in prod) don't prefetch the pictures... */}
+                    <Link href="/project/[project]" as={`/project/${this.props.project.slug}`}>
+                        <a>
 
-                        {/* Project title and subtitle */}
-                        <div className="px-6 py-5">
-                            <div className="text-lg font-bold uppercase">{this.props.project.title}</div>
-                            <p className="text-sm text-gray-400">{this.props.project.category}</p>
-                        </div>
+                            {/* Project title and subtitle */}
+                            <div className="px-6 py-5">
+                                <div className="text-lg font-bold uppercase">{this.props.project.title}</div>
+                                <p className="text-sm text-gray-400">{this.props.project.category}</p>
+                            </div>
 
-                        {/* Project technologies list */}
-                        <div className="absolute bottom-0 px-6 py-4">
-                            {technologiesIcons}
-                        </div>
+                            {/* Project technologies list */}
+                            <div className="absolute bottom-0 px-6 py-4">
+                                {technologiesIcons}
+                            </div>
 
-                        {/* Project preview image */}
-                        <div
-                            className={classNames(
-                                styles.preview,
-                                "absolute overflow-hidden w-full h-full top-0 left-0"
-                            )}
-                            style={{ backgroundImage: "url(/images/project/" + this.props.project.preview + ")" }}
-                        ></div>
+                            {/* Project preview image */}
+                            <div
+                                className={classNames(
+                                    styles.preview,
+                                    "absolute overflow-hidden w-full h-full top-0 left-0"
+                                )}
+                                style={{ backgroundImage: "url(/images/project/" + this.props.project.preview + ")" }}
+                            ></div>
 
-                    </a>
-                </Link>
+                        </a>
+                    </Link>
+                </div>
             </div>
         );
     }

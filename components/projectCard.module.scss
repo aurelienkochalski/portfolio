@@ -1,22 +1,23 @@
-$accentWidth: 4px;
-$accentHeight: 24px;
+@import "../styles/variables.scss";
+
+$accentWidth: 5px;
+$accentHeight: 36px;
 
 .card {
     background-color: rgba($color: #000000, $alpha: 0.1);
     backdrop-filter: blur(12px);
     min-height: 260px;
     cursor: pointer;
-    overflow: hidden;
 
     text-shadow: 1px 0px 5px rgba($color: #000000, $alpha: 0.7);
     &::before {
         content: "";
         width: $accentWidth;
         height: $accentHeight;
-        background-color: orangered; // TODO : passer un paramètre props
         position: absolute;
+        background-color: $colorAccentYellow; // Default accent color
         top: 18px;
-        left: -$accentWidth / 4;
+        left: -$accentWidth / 2;
         transition: all 0.1s ease-in, height 0.2s ease-in, top 0.1s ease-in 0.1s;
     }
 

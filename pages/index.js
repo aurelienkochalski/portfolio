@@ -111,7 +111,7 @@ export default class Home extends React.Component {
             });
 
             return (
-                <ResumeColumn columns={COLUMNS_SKILLS}>{skillsBlock}</ResumeColumn>
+                <ResumeColumn index={index} columns={COLUMNS_SKILLS}>{skillsBlock}</ResumeColumn>
             );
         });
 
@@ -126,7 +126,7 @@ export default class Home extends React.Component {
 
                     <h1 className="text-4xl leading-tight tracking-wide text-center sm:text-left sm:text-5xl md:text-6xl">{infos.name}</h1>
                     <h2 className="text-lg tracking-wider text-center uppercase sm:text-left sm:text-xl md:text-2xl">- {infos.job} -</h2>
-                    <p className="mt-10">{infos.description}</p>
+                    <p className="mt-10 text-lg">{infos.description}</p>
 
                     <div>
 

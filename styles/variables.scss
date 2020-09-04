@@ -1,4 +1,27 @@
+$fontFamily: "Custom", sans-serif;
+
 $colorPrimary: #ffffff;
+
 $colorBackgroundPrimary: #181818;
 $colorBackgroundPrimaryTransparent: rgba($colorBackgroundPrimary, 0.4);
-$fontFamily: "Custom", sans-serif;
+
+$colorAccentGreen: #a4d579;
+$colorAccentOrange: #d85b39;
+$colorAccentBlue: #7de9f3;
+$colorAccentPink: #f351af;
+$colorAccentYellow: #e7dc77;
+
+$colorAccentByProjectCategory: (
+    "mobileapp": $colorAccentOrange,
+    "desktopapp": $colorAccentGreen,
+    "website": $colorAccentBlue,
+    "mobilegame": $colorAccentPink,
+    "default": $colorAccentYellow,
+);
+
+// We dynamically generate the colors for each project categories
+@each $key, $color in $colorAccentByProjectCategory {
+    .category-#{$key}::before {
+        background-color: $color !important;
+    }
+}
