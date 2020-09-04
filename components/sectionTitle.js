@@ -4,7 +4,7 @@ export default function SectionTitle(props) {
 
     var classes = classNames(
         styles.title,
-        "block py-6 uppercase font-title tracking-widest"
+        "block py-12 uppercase font-title tracking-widest"
     );
 
     return (

@@ -5,6 +5,12 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+html,
+body,
+#__next {
+    height: 100%;
+}
+
 body {
     color: $colorPrimary;
     background-color: $colorBackgroundPrimary;

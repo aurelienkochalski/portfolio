@@ -159,9 +159,9 @@ export default class Home extends React.Component {
 
                     <footer className="fixed block px-2 py-1 text-xs text-right rounded-t-sm">
                         Made with
-                        <span className={"fonticon icon-heart"}></span>
+                        <span className="fonticon icon-heart"></span>
                         and
-                        <span className={"fonticon icon-coffee"}></span>
+                        <span className="fonticon icon-coffee"></span>
                     </footer>
 
                     <LanguageSwitcher

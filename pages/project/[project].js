@@ -1,5 +1,4 @@
 import { withRouter } from "next/router";
-import Link from "next/link";
 import ProjectView from "../../components/projectView";
 import {getProjects, getProject} from "../../middleware/database";
 
@@ -47,11 +46,6 @@ class Project extends React.Component {
 
         return (
             <>
-
-                <Link href="/" scroll={false}>{/* `scroll` set to false allows us to restore the scroll position when returning to the homepage */}
-                    <a className="fixed top-0 right-0 z-10 px-4 py-2">← Back</a>
-                </Link>
-
                 <ProjectView
                     title={project.title}
                     category={project.category}

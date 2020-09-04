@@ -14,6 +14,15 @@ module.exports = {
             wide: ".025em",
             wider: ".1em",
             widest: ".25em",
+        },
+        extend: {
+            width: {
+                "400": "400px",
+                "800": "800px"
+            },
+            margin: {
+                "400": "400px",
+            }
         }
     },
     variants: {},

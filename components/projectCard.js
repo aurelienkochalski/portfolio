@@ -14,11 +14,6 @@ export default class ProjectCard extends React.Component {
 
     render() {
 
-        var classes = classNames(
-            styles.card,
-            "max-w-sm"
-        );
-
         var technologiesIcons = this.props.project.technologies.map(function (technology, index) {
             return <div
                 key={technology}
@@ -31,7 +26,10 @@ export default class ProjectCard extends React.Component {
 
         return (
             <div
-                className={classes}
+                className={classNames(
+                    styles.card,
+                    "max-w-sm"
+                )}
                 data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (this.props.index * animationStaggering)}
             >
                 {/* TODO : it seems that next prefetch (activated only in prod) don't prefetch the pictures... */}
