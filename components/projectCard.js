@@ -3,8 +3,10 @@ import styles from "./projectCard.module.scss";
 import Link from "next/link";
 import { sanitizeTechnology } from "../utils/tools";
 
-const animationDelayBeforeStarting = 200;
-const animationStaggering = 200;
+import { CSSTransition, TransitionGroup  } from "react-transition-group";
+
+const animationDelayBeforeStarting = 0;
+const animationStaggering = 100;
 
 export default class ProjectCard extends React.Component {
 
@@ -18,7 +20,11 @@ export default class ProjectCard extends React.Component {
         var technologiesIcons = this.props.project.technologies.map(function (technology, index) {
             return <div
                 key={technology}
-                className={"opacity-75 text-lg inline-block m-1 fonticon icon-" + sanitizeTechnology(technology)}
+                className={classNames(
+                    "opacity-75 text-lg inline-block m-1",
+                    "fonticon icon-" + sanitizeTechnology(technology),
+                    styles.icon
+                )}
                 data-tip={technology}
             >
                 <span>{technology}</span>
@@ -41,8 +47,14 @@ export default class ProjectCard extends React.Component {
 
                             {/* Project title and subtitle */}
                             <div className="px-6 py-5">
-                                <div className="text-lg font-bold uppercase">{this.props.project.title}</div>
-                                <p className="text-sm text-gray-400">{this.props.project.category}</p>
+                                <TransitionGroup>
+                                    <CSSTransition in={true} key={this.props.project.title} timeout={0 + this.props.index * 50}>
+                                        <div className="text-lg font-bold uppercase">{this.props.project.title}</div>
+                                    </CSSTransition>
+                                    <CSSTransition in={true} key={this.props.project.category} timeout={100 + this.props.index * 50}>
+                                        <p className="text-sm text-gray-400">{this.props.project.category}</p>
+                                    </CSSTransition>
+                                </TransitionGroup>
                             </div>
 
                             {/* Project technologies list */}

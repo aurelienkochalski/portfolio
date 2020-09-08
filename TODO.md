@@ -1,8 +1,8 @@
 ## TODO
-- Add a color scheme based on project type
-- Add about section
-- Fix styling
+- Enhance responsive for project cards
+- Change favicon
 - Check all translations (expect projects)
+- Add about section
 
 - Apply props validation on more components (see resume.js)
 - Translate the projects

@@ -6,6 +6,7 @@ export const siteTitle = "Aurélien Kochalski - Portfolio";
 export default function Layout(props) {
 
     var classes = classNames(
+        "p-12",
         styles.container
     );
 

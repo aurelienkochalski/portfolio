@@ -25,7 +25,9 @@ module.exports = {
             }
         }
     },
-    variants: {},
+    variants: {
+        margin: ["responsive", "last", "first"], // We activate the last: and first: utility for margins
+    },
     plugins: [],
     future: {
         removeDeprecatedGapUtilities: true // opt-in to remove the deprecated gap utilities (will not be necessary in tailwind v2.0+)

@@ -25,11 +25,11 @@ $accentHeight: 36px;
         z-index: -1;
         background-size: cover;
         background-position: 50% center;
-        opacity: 0.05;
+        opacity: 0.2;
         transform-origin: center center;
         transition: all 0.3s ease-out, opacity 0.4s ease-out, filter 0.2s linear;
-        transform: translateY(0px) scale(1.02);
-        filter: saturate(0) contrast(1.2) blur(2px);
+        transform: translateY(0px) scale(1.05);
+        filter: saturate(0) brightness(0.4) blur(2px);
     }
     &:hover {
         &::before {
@@ -41,9 +41,8 @@ $accentHeight: 36px;
         }
         .preview {
             opacity: 1;
-            //transform: scaleY(1);
             transform: translateY(4px) scale(1);
-            filter: saturate(1) contrast(1) blur(0px);
+            filter: saturate(1) brightness(1) blur(0px);
         }
         .text-xl,
         p,
@@ -52,6 +51,14 @@ $accentHeight: 36px;
             //backdrop-filter: blur(8px) brightness(0.9);
 
             color: white;
+        }
+    }
+
+    .icon {
+        transition: transform 0.1s linear, opacity 0.1s linear;
+        &:hover {
+            opacity: 1;
+            transform: scale(1.7);
         }
     }
 }

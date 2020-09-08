@@ -95,23 +95,26 @@ export default class Home extends React.Component {
         });
 
         // We dynamically split the skills data in multiple array with an utility function to render inside multiple columns
-        const COLUMNS_SKILLS = 3;
+        const COLUMNS_SKILLS = 2;
         const skillsSplitted = splitArray(skills, Math.ceil(skills.length / COLUMNS_SKILLS));
 
-        var skillsColumns = skillsSplitted.map(function (skillColumn, index) {
-
-            var skillsBlock = skillColumn.map(function (skillGroup, index) {
-                return (
-                    <ResumeBlock
-                        key={skillGroup._id}
-                        title={skillGroup.title}
-                        elements={skillGroup.elements}
-                    />
-                );
-            });
-
+        const skillsLeft = skillsSplitted[0].map(function (skillGroup, index) {
             return (
-                <ResumeColumn index={index} columns={COLUMNS_SKILLS}>{skillsBlock}</ResumeColumn>
+                <ResumeBlock
+                    key={skillGroup._id}
+                    title={skillGroup.title}
+                    elements={skillGroup.elements}
+                />
+            );
+        });
+
+        const skillsRight = skillsSplitted[1].map(function (skillGroup, index) {
+            return (
+                <ResumeBlock
+                    key={skillGroup._id}
+                    title={skillGroup.title}
+                    elements={skillGroup.elements}
+                />
             );
         });
 
@@ -124,9 +127,17 @@ export default class Home extends React.Component {
 
                 <div className="container mx-auto">
 
-                    <h1 className="text-4xl leading-tight tracking-wide text-center sm:text-left sm:text-5xl md:text-6xl">{infos.name}</h1>
-                    <h2 className="text-lg tracking-wider text-center uppercase sm:text-left sm:text-xl md:text-2xl">- {infos.job} -</h2>
-                    <p className="mt-10 text-lg">{infos.description}</p>
+                    <TransitionGroup>
+                        <CSSTransition in={true} key={infos.name} timeout={animationDelayBeforeStarting + 0 * animationStaggering}>
+                            <h1 className="text-4xl leading-tight tracking-wide text-center sm:text-left sm:text-5xl md:text-6xl">{infos.name}</h1>
+                        </CSSTransition>
+                        <CSSTransition in={true} key={infos.job} timeout={animationDelayBeforeStarting + 1 * animationStaggering}>
+                            <h2 className="text-lg tracking-wider text-center uppercase sm:text-left sm:text-xl md:text-2xl">- {infos.job} -</h2>
+                        </CSSTransition>
+                        <CSSTransition in={true} key={infos.description} timeout={animationDelayBeforeStarting + 2 * animationStaggering}>
+                            <p className="mt-10 text-lg leading-relaxed text-justify">{infos.description}</p>
+                        </CSSTransition>
+                    </TransitionGroup>
 
                     <div>
 
@@ -140,24 +151,26 @@ export default class Home extends React.Component {
                         <SectionBlock>
                             <SectionTitle text={infos.sectionResume} />
                             <div className="flex flex-col mb-4 md:flex-row">
-                                {skillsColumns}
+                                <ResumeColumn size="2/3">{skillsLeft}</ResumeColumn>
+                                <ResumeColumn size="1/3">{skillsRight}</ResumeColumn>
                             </div>
                         </SectionBlock>
 
                         <SectionBlock>
                             <SectionTitle text={infos.sectionContact} />
-                            {/* TODO : temporary picture, change it */}
                             <img
-                                className="inline w-20 h-20 mr-6 rounded-full"
-                                src="/images/poonicorn.png"
+                                className="block w-32 h-32 mx-auto mt-8 mb-12 rounded-full sm:w-24 sm:h-24 sm:inline sm:mr-6 sm:float-left sm:my-0 float:none"
+                                src="/images/photo.png"
                                 data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (0 * animationStaggering)}
                             />
-                            {contactsList}
+                            <div className="items-baseline pl-8 grid grid-cols-1 lg:grid-cols-2">
+                                {contactsList}
+                            </div>
                         </SectionBlock>
 
                     </div>
 
-                    <footer className="fixed block px-2 py-1 text-xs text-right rounded-t-sm">
+                    <footer className="fixed block w-full px-2 py-1 text-xs text-center rounded-t-sm sm:w-auto sm:text-right">
                         Made with
                         <span className="fonticon icon-heart"></span>
                         and

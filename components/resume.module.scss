@@ -8,22 +8,28 @@
     $capWidth: 4px;
     $capOffset: 4px;
 
-    height: $barHeight;
+    height: $barHeight * 1.5;
     background: rgba(#888888, 0.4);
 
     .progression {
         background: $colorPrimary;
         transition: width 0.7s ease-in-out;
+    }
 
-        &::after {
-            content: "";
-            position: absolute;
-            top: -$capOffset / 2;
-            right: -$capWidth / 2;
-            height: $barHeight + $capOffset;
-            width: $capWidth;
-            background-color: $colorPrimary;
-            border-radius: $barHeight / 2;
+    @screen md {
+        height: $barHeight;
+
+        .progression {
+            &::after {
+                content: "";
+                position: absolute;
+                top: -$capOffset / 2;
+                right: -$capWidth / 2;
+                height: $barHeight + $capOffset;
+                width: $capWidth;
+                background-color: $colorPrimary;
+                border-radius: $barHeight / 2;
+            }
         }
     }
 }

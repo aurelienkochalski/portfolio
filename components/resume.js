@@ -8,8 +8,8 @@ const animationStaggering = 200;
 export function ResumeColumn(props) {
 
     var classes = classNames(
-        "w-full mr-8",
-        "md:w-1/" + props.columns
+        "flex-initial w-full md:mr-24 lg:mr-32 md:last:mr-0 mb-40 sm:mb-0 last:mb-0",
+        "md:w-" + props.size
     );
     return (
         <div
@@ -36,11 +36,28 @@ export function ResumeBlock(props) {
         );
     });
 
+    let skillsWrapper;
+    if (skillElements[0].props.progression) { // If the first elements contains a progression, the wrapper could render in multiple columns
+        skillsWrapper = <div className="items-end grid grid-cols-2 md:grid-cols-1 gap-x-12 md:gap-x-0">{skillElements}</div>;
+    } else {
+        skillsWrapper = <div>{skillElements}</div>;
+    }
+
     return (
-        <>
-            <h5 className="mb-5 font-bold uppercase">{props.title}</h5>
-            {skillElements}
-        </>
+        <div
+            className="mt-4 mb-40 sm:mb-24 last:mb-4"
+            data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (props.index * animationStaggering)}
+        >
+            <TransitionGroup>
+                <CSSTransition in={true} key={props.title} timeout={0 + props.index * animationStaggering}>
+                    <h5 className="inline-block pb-3 mb-2 text-xl font-bold text-left uppercase border-b border-white border-solid border-opacity-25">{props.title}</h5>
+                </CSSTransition>
+            </TransitionGroup>
+
+            <TransitionGroup>
+                {skillsWrapper}
+            </TransitionGroup>
+        </div>
     );
 }
 
@@ -48,34 +65,29 @@ export function ResumeItem(props) {
 
     var classes = classNames(
         styles.resumeItem,
-        "m-t1",
-        (props.title != undefined ? "mb-8" : "mb-2") // If the title is set, we add more margin
+        "md:mx-2 mx-0 mt-4",
+        (props.title != undefined ? "mb-12" : "mb-0") // If the title is set, we add more margin
     );
 
     return (
-        <div className={classes}>
-            {props.title &&
-                <b className="block mb-1 text-sm">{props.title}</b>
-            }
+        <CSSTransition in={true} key={props.children} timeout={50 + props.index * animationStaggering}>
+            <div className={classes}>
+                {props.title &&
+                <b className="block mb-1 text-lg">[ {props.title} ]</b>
+                }
 
-            <TransitionGroup>
-                <CSSTransition
-                    key={props.children}
-                    timeout={animationDelayBeforeStarting + props.index * animationStaggering}
-                >
-                    <em className="block mb-1 text-sm not-italic text-normal">{props.children}</em>
-                </CSSTransition >
-            </TransitionGroup>
+                <em className="block mb-1 text-base not-italic text-normal">{props.children}</em>
 
-            {props.progression &&
+                {props.progression &&
                 <ResumeProgress progression={props.progression}/>
-            }
+                }
 
-            {props.description &&
-                <p className="block mt-4 text-xs whitespace-pre-line">{props.description}</p>
-            }
+                {props.description &&
+                <p className="block mt-1 text-sm whitespace-pre-line">{props.description}</p>
+                }
 
-        </div>
+            </div>
+        </CSSTransition>
     );
 }
 
@@ -83,7 +95,7 @@ export function ResumeProgress(props) {
 
     var classesProgress = classNames(
         styles.progress,
-        "block mt-1 mb-3"
+        "block mt-1 mb-1"
     );
     var classesProgression = classNames(
         styles.progression,
@@ -91,7 +103,10 @@ export function ResumeProgress(props) {
     );
 
     return (
-        <div className={classesProgress}>
+        <div
+            className={classesProgress}
+            title={props.progression + "%"}
+        >
             <span
                 className={classesProgression}
                 style={{ width: props.progression + "%" }}

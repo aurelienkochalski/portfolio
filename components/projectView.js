@@ -65,7 +65,7 @@ export default class ProjectView extends React.Component {
                         </div>
                     </div>
 
-                    <p className="py-8">{this.props.description}</p>
+                    <p className="py-8 text-justify whitespace-pre-line">{this.props.description}</p>
 
                     <div className="md:mt-auto">
                         <p className="pb-4 text-sm"><b>Technologies: </b>{this.props.technologies}</p>
