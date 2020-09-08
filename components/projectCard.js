@@ -35,7 +35,7 @@ export default class ProjectCard extends React.Component {
             <div
                 className={classNames(
                     styles.card,
-                    "max-w-sm h-full",
+                    "mx-auto h-full w-full",
                     this.projectCategory
                 )}
                 data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (this.props.index * animationStaggering)}

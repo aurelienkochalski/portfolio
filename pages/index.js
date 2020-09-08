@@ -143,7 +143,7 @@ export default class Home extends React.Component {
 
                         <SectionBlock>
                             <SectionTitle text={infos.sectionProjects} />
-                            <div className="overflow-visible grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8 lg:grid-cols-4 lg:gap-12">
+                            <div className="overflow-visible grid grid-cols-2 gap-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-3 md:gap-4 lg:grid-cols-4 lg:gap-12">
                                 {projectsList}
                             </div>
                         </SectionBlock>
