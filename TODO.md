@@ -1,9 +1,10 @@
 ## TODO
-- Enhance responsive for project cards
-- Change favicon
-- Check all translations (expect projects)
-- Add about section
+- First deploy
+- Global testing
 
+- Set tailwind purgeLayersByDefault to true (see https://tailwindcss.com/docs/upcoming-changes)
+- Add about section
+- Add dummy data
 - Apply props validation on more components (see resume.js)
 - Translate the projects
 - Animated triangles

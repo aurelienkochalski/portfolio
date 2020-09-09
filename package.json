@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "description": "A statically generated portfolio",
     "author": "Aurélien Kochalski <aurelien.kochalski@gmail.com> (https://aurelien.kochalski.fr)",
-    "license": "TODO",
     "scripts": {
         "dev": "next dev",
         "build": "npm run font && next build",

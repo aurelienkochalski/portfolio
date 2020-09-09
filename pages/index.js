@@ -129,10 +129,10 @@ export default class Home extends React.Component {
 
                     <TransitionGroup>
                         <CSSTransition in={true} key={infos.name} timeout={animationDelayBeforeStarting + 0 * animationStaggering}>
-                            <h1 className="text-4xl leading-tight tracking-wide text-center sm:text-left sm:text-5xl md:text-6xl">{infos.name}</h1>
+                            <h1 className="text-4xl leading-tight tracking-wide text-left sm:text-5xl md:text-6xl">{infos.name}</h1>
                         </CSSTransition>
                         <CSSTransition in={true} key={infos.job} timeout={animationDelayBeforeStarting + 1 * animationStaggering}>
-                            <h2 className="text-lg tracking-wider text-center uppercase sm:text-left sm:text-xl md:text-2xl">- {infos.job} -</h2>
+                            <h2 className="text-xl tracking-wider text-left uppercase sm:text-2xl">{infos.job}</h2>
                         </CSSTransition>
                         <CSSTransition in={true} key={infos.description} timeout={animationDelayBeforeStarting + 2 * animationStaggering}>
                             <p className="mt-10 text-lg leading-relaxed text-justify">{infos.description}</p>
