@@ -2,7 +2,7 @@ const fontSrc = "font_custom/*.ttf";
 const fontDest = "public/fonts";
 
 // List of glyphs to keep inside the optimized font, the other glyphs are discarded on build
-const fontGlyphs = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789éèàêâùçÉÈÊÀ.,;:/\\+-_&@!?(){}[]\"'";
+const fontGlyphs = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ïìéèàêâùçÉÈÊÀ.,;:/\\+-_&@!?(){}[]\"'";
 
 var Fontmin = require("fontmin");
 
