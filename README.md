@@ -94,7 +94,8 @@ Description of the npm scripts available in `package.json`:
 - `npm run dev`: Starts *Next.js* in development mode with hot module replacement, error reporting, watch mode, and more). Use it when you add new features to the project.
 - `npm run build`: Creates an optimized production build in the `.next` folder.
 - `npm start`: After building, use this to starts a Next.js server in production mode.
-- `npm run font`: Generate the font subset from a list of character. Automatically called by the `build` task.
+- `npm run font`: Generate the font subset from a list of character. Automatically called by the `build` and `build-static`tasks.
+- `npm run build-static`: Creates a statically generated production build in the `out` folder.
 
 ----
 
@@ -120,24 +121,6 @@ Description of the npm scripts available in `package.json`:
 
 ### 4. Start development server
 - `npm run dev`
-
-----
-
-## Build for production
-
-### 1. Create a new build
-
-Update the version number in `package.json` :
-- `version": "1.0.0"`
-
-Build for production (will be available in the `.next` folder):
-- `npm run build` 
-
-Test the build:
-- `npm run start`
-
-### 2. Publish the build
-> TODO 
 
 ----
 
