@@ -3,10 +3,12 @@
     "version": "1.0.0",
     "description": "A statically generated portfolio",
     "author": "Aurélien Kochalski <aurelien.kochalski@gmail.com> (https://aurelien.kochalski.fr)",
+    "license": "UNLICENSED",
     "scripts": {
         "dev": "next dev",
         "build": "npm run font && next build",
         "start": "next start",
+        "build-static": "npm run font && next build && next export",
         "font": "node ./utils/fontOptimizer"
     },
     "dependencies": {

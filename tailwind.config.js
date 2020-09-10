@@ -30,6 +30,7 @@ module.exports = {
     },
     plugins: [],
     future: {
-        removeDeprecatedGapUtilities: true // opt-in to remove the deprecated gap utilities (will not be necessary in tailwind v2.0+)
+        removeDeprecatedGapUtilities: true, // opt-in to remove the deprecated gap utilities (will not be necessary in tailwind v2.0+)
+        purgeLayersByDefault: true // opt-in to future purge method that will purge base, components, and utilities (will be default in tailwind v2.0+)
     }
 };
