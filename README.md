@@ -9,7 +9,7 @@ Feel free to contact me if you would like to know more.
 
 ## Stack
 
-This project is a Single Page Application developped with `Next.js`, which is a `React` framework including features like: 
+This project is a Single Page Application developed with `Next.js`, which is a `React` framework including features like: 
 - static & server rendering
 - route pre-fetching
 - built-in CSS Modules support
