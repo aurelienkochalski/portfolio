@@ -72,7 +72,7 @@ export default class ProjectView extends React.Component {
                             "py-8 text-justify whitespace-pre-line",
                             styles.description
                         )}
-                        dangerouslySetInnerHTML={{ __html: this.props.description }} // NOTE : We can purposely use this to render links un content because the data is coming from a trusted local database which runs only at build time.
+                        dangerouslySetInnerHTML={{ __html: this.props.description }} // NOTE : We can purposely use this to render links in content because the data is coming from a trusted local database which runs only at build time.
                     ></p>
 
                     <div className="md:mt-auto">

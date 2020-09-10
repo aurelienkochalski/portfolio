@@ -9,6 +9,7 @@ import SectionTitle from "../components/sectionTitle";
 import ProjectCard from "../components/projectCard";
 import { ResumeBlock, ResumeColumn } from "../components/resume";
 import ContactItem from "../components/contactItem";
+import AboutItem from "../components/aboutItem";
 import LanguageSwitcher from "../components/languageSwitcher";
 
 import { CSSTransition, TransitionGroup  } from "react-transition-group";
@@ -76,22 +77,30 @@ export default class Home extends React.Component {
         const contacts = data.contacts;
         const projects = data.projects;
         const skills = data.skills;
+        const about = infos.about;
 
         // TODO : transform those into components
-        var projectsList = projects.map(function (project, index) {
+        const projectsList = projects.map(function (project, index) {
             return <ProjectCard
                 key={project._id}
                 index={index}
                 project={project}></ProjectCard>;
         });
 
-        var contactsList = contacts.map(function (contact, index) {
+        const contactsList = contacts.map(function (contact, index) {
             return <ContactItem
                 key={contact.value}
                 index={index}
                 link={contact.link}
                 text={contact.value}
                 icon={contact.method} />;
+        });
+
+        const aboutList = about.map(function (item, index) {
+            return <AboutItem
+                index={index}
+                text={item}
+            />;
         });
 
         // We dynamically split the skills data in multiple array with an utility function to render inside multiple columns
@@ -155,6 +164,13 @@ export default class Home extends React.Component {
                             <div className="flex flex-col mb-4 md:flex-row">
                                 <ResumeColumn size="2/3" index={0}>{skillsLeft}</ResumeColumn>
                                 <ResumeColumn size="1/3" index={1}>{skillsRight}</ResumeColumn>
+                            </div>
+                        </SectionBlock>
+
+                        <SectionBlock>
+                            <SectionTitle text={infos.sectionAbout} />
+                            <div data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (0 * animationStaggering)}>
+                                {aboutList}
                             </div>
                         </SectionBlock>
 

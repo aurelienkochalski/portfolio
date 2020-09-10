@@ -1,6 +1,5 @@
 ## TODO
 - Switch pictures to better resolution and remove xl:w-800 in projectView
-- Add about section
 - Add dummy data
 - Apply props validation on more components (see resume.js)
 - Translate the projects

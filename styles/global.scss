@@ -31,6 +31,11 @@ footer {
     }
 }
 
+p > a {
+    text-decoration: underline;
+    word-break: break-all;
+}
+
 // TODO TEMP : it doesn't works in the sectionTitle module css (because the aos-animate class is added later, at runtime)
 section .aos-animate[class*="sectionTitle"] {
     &::before {
