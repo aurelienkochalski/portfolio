@@ -38,7 +38,7 @@ export default class Home extends React.Component {
         super(props);
 
         const languages = this.props.data.infos.languages;
-        const defaultLanguage = languages[0];
+        this.defaultLanguage = languages[1];
 
         // We build the array containing all translations
         this.dataTranslations = []; // NOTE : We declare it as a class variable in order to be accessed inside handleLanguageChange()
@@ -48,8 +48,8 @@ export default class Home extends React.Component {
 
         // Initial state
         this.state = {
-            activeLanguage: defaultLanguage, // Current language
-            dataTranslated: this.dataTranslations[defaultLanguage], // A reference to the data translated in the current language
+            activeLanguage: this.defaultLanguage, // Current language
+            dataTranslated: this.dataTranslations[this.defaultLanguage], // A reference to the data translated in the current language
         };
 
         // Events binding
@@ -101,7 +101,8 @@ export default class Home extends React.Component {
         const skillsLeft = skillsSplitted[0].map(function (skillGroup, index) {
             return (
                 <ResumeBlock
-                    key={skillGroup._id}
+                    key={index}
+                    index={index}
                     title={skillGroup.title}
                     elements={skillGroup.elements}
                 />
@@ -111,7 +112,8 @@ export default class Home extends React.Component {
         const skillsRight = skillsSplitted[1].map(function (skillGroup, index) {
             return (
                 <ResumeBlock
-                    key={skillGroup._id}
+                    key={index}
+                    index={index}
                     title={skillGroup.title}
                     elements={skillGroup.elements}
                 />
@@ -129,10 +131,10 @@ export default class Home extends React.Component {
 
                     <TransitionGroup>
                         <CSSTransition in={true} key={infos.name} timeout={animationDelayBeforeStarting + 0 * animationStaggering}>
-                            <h1 className="text-4xl leading-tight tracking-wide text-left sm:text-5xl md:text-6xl">{infos.name}</h1>
+                            <h1 className="pt-6 text-4xl leading-tight tracking-wide text-center sm:pt-0 sm:text-left sm:text-5xl md:text-6xl">{infos.name}</h1>
                         </CSSTransition>
                         <CSSTransition in={true} key={infos.job} timeout={animationDelayBeforeStarting + 1 * animationStaggering}>
-                            <h2 className="text-xl tracking-wider text-left uppercase sm:text-2xl">{infos.job}</h2>
+                            <h2 className="pt-2 text-sm tracking-wider text-center uppercase sm:pt-0 sm:text-left sm:text-2xl">{infos.job}</h2>
                         </CSSTransition>
                         <CSSTransition in={true} key={infos.description} timeout={animationDelayBeforeStarting + 2 * animationStaggering}>
                             <p className="mt-10 text-lg leading-relaxed text-justify">{infos.description}</p>
@@ -143,7 +145,7 @@ export default class Home extends React.Component {
 
                         <SectionBlock>
                             <SectionTitle text={infos.sectionProjects} />
-                            <div className="overflow-visible grid grid-cols-2 gap-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-3 md:gap-4 lg:grid-cols-4 lg:gap-12">
+                            <div className="overflow-visible grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-3 md:gap-4 lg:grid-cols-4 lg:gap-12">
                                 {projectsList}
                             </div>
                         </SectionBlock>
@@ -151,8 +153,8 @@ export default class Home extends React.Component {
                         <SectionBlock>
                             <SectionTitle text={infos.sectionResume} />
                             <div className="flex flex-col mb-4 md:flex-row">
-                                <ResumeColumn size="2/3">{skillsLeft}</ResumeColumn>
-                                <ResumeColumn size="1/3">{skillsRight}</ResumeColumn>
+                                <ResumeColumn size="2/3" index={0}>{skillsLeft}</ResumeColumn>
+                                <ResumeColumn size="1/3" index={1}>{skillsRight}</ResumeColumn>
                             </div>
                         </SectionBlock>
 
@@ -163,23 +165,16 @@ export default class Home extends React.Component {
                                 src="/images/photo.png"
                                 data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (0 * animationStaggering)}
                             />
-                            <div className="items-baseline pl-8 grid grid-cols-1 lg:grid-cols-2">
+                            <div className="items-baseline max-w-xs mx-auto sm:max-w-none sm:pl-8 grid grid-cols-1 lg:grid-cols-2">
                                 {contactsList}
                             </div>
                         </SectionBlock>
 
                     </div>
 
-                    <footer className="fixed block w-full px-2 py-1 text-xs text-center rounded-t-sm sm:w-auto sm:text-right">
-                        Made with
-                        <span className="fonticon icon-heart"></span>
-                        and
-                        <span className="fonticon icon-coffee"></span>
-                    </footer>
-
                     <LanguageSwitcher
                         languages={languages}
-                        defaultLanguage={languages[0]}
+                        defaultLanguage={this.defaultLanguage}
                         onLanguageChange={(language) => {
                             this.handleLanguageChange(language);
                         }}
