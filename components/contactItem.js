@@ -1,10 +1,10 @@
-const animationDelayBeforeStarting = 200;
+const animationDelayBeforeStarting = 0;
 const animationStaggering = 50;
 
 export default function ContactItem(props) {
 
     var classes = classNames(
-        "inline-block mb-6 mr-6 text-lg text-left align-text-top whitespace-pre-line"
+        "inline-block mb-6 mr-6 text-lg text-left align-text-top whitespace-pre-line break-all"
     );
 
     return (

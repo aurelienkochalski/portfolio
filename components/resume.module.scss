@@ -3,6 +3,17 @@
 .resumeItem {
 }
 
+.title {
+    &::before {
+        content: "[";
+        padding-right: 8px;
+    }
+    &::after {
+        content: "]";
+        padding-left: 8px;
+    }
+}
+
 .progress {
     $barHeight: 4px;
     $capWidth: 4px;

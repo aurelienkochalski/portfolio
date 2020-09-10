@@ -6,7 +6,7 @@ export const siteTitle = "Aurélien Kochalski - Portfolio";
 export default function Layout(props) {
 
     var classes = classNames(
-        "p-12",
+        "relative p-8 sm:p-12 mt-12 mb-0 sm:mb-12 mx-auto",
         styles.container
     );
 
@@ -27,6 +27,13 @@ export default function Layout(props) {
                 <meta name="description" content=""/> {/* TODO : add meta tags */}
             </Head>
             <main>{props.children}</main>
+
+            <footer className="absolute bottom-0 right-0 block w-full px-2 py-2 text-xs text-center rounded-t-sm opacity-75 sm:py-1 sm:fixed sm:w-auto sm:text-right">
+                        Made with
+                <span className="fonticon icon-heart"></span>
+                        and
+                <span className="fonticon icon-coffee"></span>
+            </footer>
         </div>
     );
 }

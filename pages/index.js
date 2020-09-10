@@ -13,8 +13,8 @@ import LanguageSwitcher from "../components/languageSwitcher";
 
 import { CSSTransition, TransitionGroup  } from "react-transition-group";
 
-const animationDelayBeforeStarting = 200;
-const animationStaggering = 100;
+const animationDelayBeforeStarting = 0;
+const animationStaggering = 50;
 
 // This function gets called at build time on server-side only.
 export async function getStaticProps() {

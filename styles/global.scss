@@ -21,10 +21,8 @@ body {
 }
 
 footer {
-    backdrop-filter: blur(10px);
-    bottom: 0;
-    right: 8px;
-    background-color: $colorBackgroundPrimaryTransparent;
+    //backdrop-filter: blur(10px);
+    //background-color: $colorBackgroundPrimaryTransparent;
 
     .fonticon {
         position: relative;
@@ -36,7 +34,12 @@ footer {
 // TODO TEMP : it doesn't works in the sectionTitle module css (because the aos-animate class is added later, at runtime)
 section .aos-animate[class*="sectionTitle"] {
     &::before {
-        width: 100px !important;
+        width: 12% !important;
+    }
+    @screen sm {
+        &::before {
+            width: 100px !important;
+        }
     }
 }
 
@@ -61,11 +64,6 @@ section .aos-animate[class*="sectionTitle"] {
 
 /* ending EXIT animation */
 .exit-active {
-    /*
-  opacity: 0;
-  transform: scale(4);
-  transition: all 1000ms ease-in-out;
-  */
 }
 
 .tooltip {

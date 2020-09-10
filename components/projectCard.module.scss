@@ -5,7 +5,7 @@ $accentHeight: 36px;
 
 .card {
     background-color: rgba($color: #000000, $alpha: 0.1);
-    backdrop-filter: blur(12px);
+    //backdrop-filter: blur(12px);
     height: 260px;
     max-width: 210px;
     min-width: 190px;
@@ -27,11 +27,11 @@ $accentHeight: 36px;
         z-index: -1;
         background-size: cover;
         background-position: 50% center;
-        opacity: 0.2;
         transform-origin: center center;
         transition: all 0.3s ease-out, opacity 0.4s ease-out, filter 0.2s linear;
         transform: translateY(0px) scale(1.05);
-        filter: saturate(0) brightness(0.4) blur(2px);
+        opacity: 0.4;
+        filter: blur(1px);
     }
     &:hover {
         &::before {
@@ -44,7 +44,7 @@ $accentHeight: 36px;
         .preview {
             opacity: 1;
             transform: translateY(4px) scale(1);
-            filter: saturate(1) brightness(1) blur(0px);
+            filter: blur(0px);
         }
         .text-xl,
         p,
@@ -61,6 +61,18 @@ $accentHeight: 36px;
         &:hover {
             opacity: 1;
             transform: scale(1.7);
+        }
+    }
+
+    // Desaturate animation available only on desktop
+    @screen md {
+        .preview {
+            opacity: 0.2;
+            filter: saturate(0) brightness(0.4) blur(2px);
+        }
+        &:hover .preview {
+            opacity: 1;
+            filter: saturate(1) brightness(1) blur(0px);
         }
     }
 }

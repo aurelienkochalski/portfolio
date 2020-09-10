@@ -37,8 +37,10 @@ export default class ProjectView extends React.Component {
                     key={media}
                     className={mediaClasses}
                     poster={poster}
-                    muted autoPlay loop="loop">
-                    <source src={"/videos/" + media} type="video/mp4"/>
+                    muted autoPlay loop
+                    playsInline  // To prevent iOS to play the video fullscreen (in camelCase for React)
+                    src={"/videos/" + media} type="video/mp4"
+                >
                 </video>;
             }
 
@@ -59,13 +61,19 @@ export default class ProjectView extends React.Component {
                         <Link href="/" scroll={false}>{/* `scroll` set to false allows us to restore the scroll position when returning to the homepage */}
                             <a className="pr-6 text-4xl">←</a>
                         </Link>
-                        <div>
+                        <div className="block w-full">
                             <h1 className="text-lg font-bold uppercase">{this.props.title}</h1>
                             <h2 className="text-sm text-gray-400">{this.props.category}</h2>
                         </div>
                     </div>
 
-                    <p className="py-8 text-justify whitespace-pre-line">{this.props.description}</p>
+                    <p
+                        className={classNames(
+                            "py-8 text-justify whitespace-pre-line",
+                            styles.description
+                        )}
+                        dangerouslySetInnerHTML={{ __html: this.props.description }} // NOTE : We can purposely use this to render links un content because the data is coming from a trusted local database which runs only at build time.
+                    ></p>
 
                     <div className="md:mt-auto">
                         <p className="pb-4 text-sm"><b>Technologies: </b>{this.props.technologies}</p>

@@ -6,7 +6,7 @@ import { sanitizeTechnology } from "../utils/tools";
 import { CSSTransition, TransitionGroup  } from "react-transition-group";
 
 const animationDelayBeforeStarting = 0;
-const animationStaggering = 100;
+const animationStaggering = 50;
 
 export default class ProjectCard extends React.Component {
 
@@ -40,13 +40,13 @@ export default class ProjectCard extends React.Component {
                 )}
                 data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (this.props.index * animationStaggering)}
             >
-                <div className="relative h-full overflow-hidden">
+                <div className="relative flex flex-col h-full overflow-hidden">
                     {/* TODO : it seems that next prefetch (activated only in prod) don't prefetch the pictures... */}
                     <Link href="/project/[project]" as={`/project/${this.props.project.slug}`}>
-                        <a>
+                        <a className="flex-auto px-6 py-5">
 
                             {/* Project title and subtitle */}
-                            <div className="px-6 py-5">
+                            <div className="">
                                 <TransitionGroup>
                                     <CSSTransition in={true} key={this.props.project.title} timeout={0 + this.props.index * 50}>
                                         <div className="text-lg font-bold uppercase">{this.props.project.title}</div>
@@ -55,11 +55,6 @@ export default class ProjectCard extends React.Component {
                                         <p className="text-sm text-gray-400">{this.props.project.category}</p>
                                     </CSSTransition>
                                 </TransitionGroup>
-                            </div>
-
-                            {/* Project technologies list */}
-                            <div className="absolute bottom-0 px-6 py-4">
-                                {technologiesIcons}
                             </div>
 
                             {/* Project preview image */}
@@ -73,6 +68,11 @@ export default class ProjectCard extends React.Component {
 
                         </a>
                     </Link>
+
+                    {/* Project technologies list */}
+                    <div className="flex-none px-5 pb-4">
+                        {technologiesIcons}
+                    </div>
                 </div>
             </div>
         );
