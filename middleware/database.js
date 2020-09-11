@@ -33,7 +33,7 @@ export async function getProjects() {
 
     if (!client.isConnected()) await client.connect();
 
-    let data = await client.db(DB_NAME).collection("projects").find({}).toArray();
+    let data = await client.db(DB_NAME).collection("projects").find({hidden : false}).toArray();
     return data;
 }
 
