@@ -49,12 +49,11 @@ Detail of the project file structure:
 │   ├── fonts/
 │   └── favicon/
 ├── utils/
-├── font_custom/
-├── font_svg/
 ├── config.js
 ├── next.config.js
 ├── postcss.config.js
-└── tailwind.config.js
+├── tailwind.config.js
+└── _sources/
 ```
 
 Description of the main files and folders:
@@ -67,12 +66,12 @@ Description of the main files and folders:
 - `styles/`: Global styles, also contains globally defined elements like *typography*, *variables*.
 - `public/`: Contains all publically available assets like *images*, *videos*, *fonts*, *favicon*, etc... *Next.js* static file serving will conveniently map this folder to `/`.
 - `utils/`: Contains a set of useful tools like *fontOptimizer*, *scrollRestoration*, string manipulation functions and *translation* utilities.
-- `font_custom/`: Contains the source font that will be subsetted at build for an optimal loading time.
-- `font_svg/`: Contains source SVGs that will be combined an optimized into a convenient font.
 - `config.js`: Centralize variables that need to be accessed globally.
 - `next.config.js`: Mainly used to override the default *WebPack* configuration (e.g. Font generated from SVG icons)
 - `postcss.config.js`: To configure *postcss* plugin.
 - `tailwind.config.js`: To configure *TailwindCSS*, extends its functionnality and define the purge methodology.
+- `_sources/font_custom/`: Contains the source font (.ttf files) that will be subsetted at build for an optimal loading time.
+- `_sources/font_svg/`: Contains source SVG icons that will be combined and optimized into a convenient font.
 
 ## Dependencies 
 
@@ -123,6 +122,16 @@ Description of the npm scripts available in `package.json`:
 
 ### 4. Start development server
 - `npm run dev`
+
+----
+
+## Deploy (a static build)
+
+### 1. Build the project
+- `npm run build-static`
+
+### 2. Deploy
+- Deploy the generated `out` folder using FTP
 
 ----
 
