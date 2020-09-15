@@ -9,6 +9,7 @@ export default function ContactItem(props) {
 
     return (
         <a href={props.link}
+            target="_blank"
             className={classes}
             data-aos='fade-up'
             data-aos-delay={animationDelayBeforeStarting + (props.index * animationStaggering)}

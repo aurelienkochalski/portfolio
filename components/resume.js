@@ -13,7 +13,6 @@ export function ResumeColumn(props) {
         <div
             key={props.index}
             className={classes}
-            data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (props.index * animationStaggering)}
         >
             {props.children}
         </div>
@@ -43,7 +42,10 @@ export function ResumeBlock(props) {
     }
 
     return (
-        <div className="mt-4 mb-40 sm:mb-24 last:mb-4">
+        <div
+            className="mt-4 mb-40 sm:mb-24 last:mb-4"
+            data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (props.index * animationStaggering)}
+        >
             <h5 className="inline-block pb-3 mb-2 text-xl font-bold text-left uppercase border-b border-white border-solid border-opacity-25">{props.title}</h5>
             {skillsWrapper}
         </div>

@@ -8,7 +8,6 @@
 - Add an obfuscator
 - Add unit tests 
 - Add e2e tests
-- Try fully static generation : https://nextjs.org/docs/advanced-features/static-html-export#caveats
 - Deploy on push
 - SEO : meta, google preview
 - SEO : lighthouse audit
