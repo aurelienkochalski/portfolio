@@ -1,0 +1,206 @@
+// NOTE : this file could be used to understand the data structure and to create a dummy dataset for testing purposes.
+// infos collection
+{
+    "name": "Your Name",
+    "job": "Your job title",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel odio at arcu aliquam feugiat. Sed ultrices dolor porta nisi molestie, ac gravida nulla fermentum. Mauris congue venenatis nisl, id commodo nibh varius vitae. Sed eu odio in augue dignissim iaculis finibus id magna.",
+    "sectionResume": "Resume",
+    "sectionProjects": "Projects",
+    "sectionContact": "Contact",
+    "sectionAbout": "About",
+    "about": [
+        "Lorem ipsum dolor sit amet, <a href=\"#\">consectetur adipiscing</a> elit.",
+        "Phasellus vel odio at arcu aliquam feugiat. Sed <b>ultrices</b> dolor porta nisi molestie, ac gravida nulla fermentum."
+    ],
+    "languages": [
+        "en",
+        "fr"
+    ],
+    "translations": {
+        "fr": {
+            "description": "Here goes the translation of: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel odio at arcu aliquam feugiat. Sed ultrices dolor porta nisi molestie, ac gravida nulla fermentum. Mauris congue venenatis nisl, id commodo nibh varius vitae. Sed eu odio in augue dignissim iaculis finibus id magna.",
+            "sectionResume": "Compétences",
+            "sectionProjects": "Projets",
+            "sectionAbout": "A propos",
+            "about": [
+                "Here goes the translation of: Lorem ipsum dolor sit amet, <a href=\"#\">consectetur adipiscing</a> elit.",
+                "Here goes the translation of: Phasellus vel odio at arcu aliquam feugiat. Sed <b>ultrices</b> dolor porta nisi molestie, ac gravida nulla fermentum."
+            ]
+        }
+    }
+}
+// contacts collection
+[
+    {
+        "order": 1,
+        "method": "email",
+        "value": "your.email@gmail.com",
+        "link": "mailto:your.email@gmail.com"
+    },
+    {
+        "order": 2,
+        "method": "linkedin",
+        "value": "@your-account",
+        "link": "https://www.linkedin.com/in/your-account/"
+    },
+    {
+        "order": 3,
+        "method": "phone",
+        "value": "+33 0 00 00 00 00",
+        "link": "tel:+33000000000"
+    },
+    {
+        "order": 4,
+        "method": "address",
+        "value": "00000 City"
+    }
+]
+// skills collection
+[
+    {
+        "order": 1,
+        "title": "Work experience",
+        "translations": {
+            "fr": {
+                "title": "Expérience professionnelle"
+            }
+        },
+        "elements": [
+            {
+                "title": "2020 - TODAY / Your job experience",
+                "description": "Description of your job experience",
+                "text": "@ job office",
+                "translations": {
+                    "fr": {
+                        "title": "2020 - AUJOURD’HUI / Votre expérience",
+                        "description": "Description de votre expérience"
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "order": 2,
+        "title": "Education",
+        "translations": {
+            "fr": {
+                "title": "Éducation"
+            }
+        },
+        "elements": [
+            {
+                "description": "Description of your school diploma",
+                "text": "School",
+                "title": "2020 / School diploma",
+                "translations": {
+                    "fr": {
+                        "description": "Description du diplôme"
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "order": 3,
+        "title": "Personal skills",
+        "translations": {
+            "fr": {
+                "title": "Compétences"
+            }
+        },
+        "elements": [
+            {
+                "text": "Methodical",
+                "translations": {
+                    "fr": {
+                        "text": "Méthodique"
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "order": 4,
+        "title": "Development skills",
+        "translations": {
+            "fr": {
+                "title": "Développement"
+            }
+        },
+        "elements": [
+            {
+                "text": "jQuery",
+                "progression": 80
+            }
+        ]
+    },
+    {
+        "order": 5,
+        "title": "Languages",
+        "translations": {
+            "fr": {
+                "title": "Langues"
+            }
+        },
+        "elements": [
+            {
+                "text": "French",
+                "progression": 100,
+                "translations": {
+                    "fr": {
+                        "text": "Français"
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "order": 6,
+        "title": "Interests",
+        "translations": {
+            "fr": {
+                "title": "Intérêts"
+            }
+        },
+        "elements": [
+            {
+                "text": "Photography",
+                "translations": {
+                    "fr": {
+                        "text": "Photographie"
+                    }
+                }
+            }
+        ]
+    }
+]
+// projects collection
+[
+    {
+        "order": 1,
+        "hidden": false,
+        "title": "Project title",
+        "slug": "project-slug",
+        "category": "Website",
+        "description": "Description of this project. You can even add <b>HTML tags</b>.",
+        "copyright": "Person 1 / Person 2",
+        "technologies": [
+            "HTML",
+            "CSS",
+            "jQuery"
+        ],
+        "preview": "project-preview.jpg",
+        "images": [
+            "project-image-1.png",
+            "project-image-2-sm.jpg",
+            "project-image-3-sm.jpg",
+            "project-video-1.mp4"
+        ],
+        "translations": {
+            "fr": {
+                "category": "Site web",
+                "description": "Description du projet. Il est possible d'utiliser des <b>balises HTML</b>."
+            }
+        }
+    }
+]

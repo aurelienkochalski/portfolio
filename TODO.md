@@ -1,6 +1,5 @@
 ## TODO
 - Switch pictures to better resolution and remove xl:w-800 in projectView
-- Add dummy data
 - Add more projects (VR-Shooter, ple, debussy, croques, )
 - Apply props validation on more components (see resume.js)
 - Translate the projects

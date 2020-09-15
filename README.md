@@ -53,6 +53,7 @@ Detail of the project file structure:
 ├── next.config.js
 ├── postcss.config.js
 ├── tailwind.config.js
+├── dummy-data.json
 └── _sources/
 ```
 
@@ -70,6 +71,7 @@ Description of the main files and folders:
 - `next.config.js`: Mainly used to override the default *WebPack* configuration (e.g. Font generated from SVG icons)
 - `postcss.config.js`: To configure *postcss* plugin.
 - `tailwind.config.js`: To configure *TailwindCSS*, extends its functionnality and define the purge methodology.
+- `dummy-data.json`: This file could be used to understand the data structure or to create a dummy dataset for testing purposes.
 - `_sources/font_custom/`: Contains the source font (.ttf files) that will be subsetted at build for an optimal loading time.
 - `_sources/font_svg/`: Contains source SVG icons that will be combined and optimized into a convenient font.
 
@@ -117,8 +119,7 @@ Description of the npm scripts available in `package.json`:
 ### 3. Configure the database
 1. Create a mongodb database called `portfolio` and change the corresponding values in `config.js`
 2. Create the following collections: `infos`, `projects`, `skills`, `contacts`. 
-3. Add some data.
-> TODO : Add a dummy data dump to the project.
+3. Add some data to these collections by using the `dummy-data.json` or by creating your own dataset.
 
 ### 4. Start development server
 - `npm run dev`
