@@ -4,10 +4,10 @@
 /build
 
 # local
-/db
 /public/videos/
 /public/images/project/
 /public/images/photo.png
+/_sources/
 *.psd
 *.ai
 

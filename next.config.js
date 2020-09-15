@@ -1,5 +1,5 @@
 const IconfontPlugin = require("iconfont-plugin-webpack");
-const customCssTemplate = require("./font_svg/_customCssTemplate.js");
+const customCssTemplate = require("./utils/fontCssTemplate.js");
 
 module.exports = {
     //assetPrefix: ".", // Could be used to fix wrong assets path when using static html generation
@@ -11,14 +11,14 @@ module.exports = {
 
         config.plugins.push(
             new IconfontPlugin({
-                src: "font_svg",
+                src: "_sources/font_svg",
                 family: "font-icons",
                 dest: {
                     font: "public/fonts/[family].[type]",
                     css: "styles/[family].scss"
                 },
                 watch: {
-                    pattern: "font_svg/*.svg"
+                    pattern: "_sources/font_svg/*.svg"
                 },
                 cssTemplate: customCssTemplate
             })

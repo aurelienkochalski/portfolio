@@ -1,4 +1,4 @@
-const fontSrc = "font_custom/*.ttf";
+const fontSrc = "_sources/font_custom/*.ttf";
 const fontDest = "public/fonts";
 
 // List of glyphs to keep inside the optimized font, the other glyphs are discarded on build
