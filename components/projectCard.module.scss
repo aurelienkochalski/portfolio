@@ -6,8 +6,7 @@ $accentHeight: 36px;
 .card {
     background-color: rgba($color: #000000, $alpha: 0.1);
     //backdrop-filter: blur(12px);
-    height: 260px;
-    max-width: 210px;
+    height: 60vw;
     min-width: 190px;
     cursor: pointer;
 
@@ -74,5 +73,10 @@ $accentHeight: 36px;
             opacity: 1;
             filter: saturate(1) brightness(1) blur(0px);
         }
+    }
+
+    @screen sm {
+        height: 260px;
+        max-width: 210px;
     }
 }
