@@ -1,0 +1,15 @@
+{
+    "semi": true,
+    "singleQuote": false,
+    "endOfLine": "auto",
+    "printWidth": 120,
+    "bracketSpacing": true,
+    "overrides": [
+        {
+            "files": "*.md",
+            "options": {
+                "tabWidth": 1
+            }
+        }
+    ]
+}
