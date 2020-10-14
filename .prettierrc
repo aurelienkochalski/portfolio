@@ -2,8 +2,10 @@
     "semi": true,
     "singleQuote": false,
     "endOfLine": "auto",
-    "printWidth": 120,
+    "printWidth": 80,
     "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "trailingComma": "none",
     "overrides": [
         {
             "files": "*.md",

@@ -8,8 +8,13 @@
         "dev": "next dev",
         "build": "npm run font && next build",
         "start": "next start",
-        "build-static": "npm run font && next build && next export",
-        "font": "node ./utils/fontOptimizer"
+        "build-static": "npm run font && npm run optim-projects && next build && next export",
+        "font": "node ./utils/fontOptimizer",
+        "optim-projects": "npm run optim-projects-images && npm run optim-projects-previews && npm run optim-projects-videos && npm run optim-projects-videos-previews",
+        "optim-projects-images": "magick convert -resize '1000x>' -quality 80 -set filename:f '%t' ./_sources/projects/images/*.* ./public/images/projects/'%[filename:f]'.jpg",
+        "optim-projects-previews": "magick convert -resize '400x>' -quality 80 -set filename:f '%t' ./_sources/projects/previews/*.* ./public/images/projects/'%[filename:f]'.jpg",
+        "optim-projects-videos": "for i in ./_sources/projects/videos/*.mov; do ffmpeg -y -i $i -an -vcodec h264 -acodec mp2 -vf \"scale=min'(800,iw)':-2\" ./public/videos/$(basename ${i%.*}).mp4; done",
+        "optim-projects-videos-previews": "for i in ./public/videos/*.mp4; do ffmpeg -y -i $i -frames:v 1 -f image2 ./public/images/projects/$(basename ${i%.*})-preview.jpg; done"
     },
     "dependencies": {
         "aos": "^2.3.4",

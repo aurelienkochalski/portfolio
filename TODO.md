@@ -1,7 +1,6 @@
 ## TODO
 
 - Add more projects (VR-Shooter, ple, debussy, croques, )
-- Switch pictures to better resolution and remove xl:w-800 in projectView
 - Apply props validation on more components (see resume.js)
 - Translate the projects
 - Animated triangles

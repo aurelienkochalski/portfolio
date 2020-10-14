@@ -96,6 +96,11 @@ Development dependencies :
 - `fontmin`, `iconfont-plugin-webpack`: Respectively used for subsetting a font and generating a web font from SVGs
 - `postcss-preset-env`: Transforms CSS to increase readibility and for better compatibility (e.g. Adding vendor prefixes, determining needed polyfills)
 
+Global tools :
+
+- `imagemagick` is used in bash to optimize projects images.
+- `ffmpeg` is used in bash to optimize projects videos.
+
 ## Tasks
 
 Description of the npm scripts available in `package.json`:
@@ -103,8 +108,50 @@ Description of the npm scripts available in `package.json`:
 - `npm run dev`: Starts _Next.js_ in development mode with hot module replacement, error reporting, watch mode, and more). Use it when you add new features to the project.
 - `npm run build`: Creates an optimized production build in the `.next` folder.
 - `npm start`: After building, use this to starts a Next.js server in production mode.
-- `npm run font`: Generate the font subset from a list of character. Automatically called by the `build` and `build-static` tasks.
 - `npm run build-static`: Creates a statically generated production build in the `out` folder.
+- `npm run font`: Generate the font subset from a list of character.
+- `npm run optim-projects`: Generates optimized versions of projects images, videos and previews found in the `_sources/projects/` directory. (See the next section for detailed explanation)
+  _NOTE_ : The `build-static` will automatically call `font` and `optim-projects` in order to bundle up-to-date assets.
+
+## Other tasks
+
+- `optim-projects-images` loop through projects images (.jpg and .png) to reduce filesize by resizing to a defined width and by applying compression. (And it's a very similar operation for `optim-projects-preview`)
+
+```bash
+magick convert # ImageMagick is the tool choosed to manipulate images
+    -resize '1000x>' # Resize the file to 1000px width max, don't upscale if file is smaller
+    -quality 80  # Set jpg quality compression
+    -set filename:f '%t' # Keep a reference to the current iterated filename
+    ./_sources/projects/images/*.* # Loop through the source files
+    ./public/images/projects/'%[filename:f]'.jpg # Output file
+```
+
+- `optim-projects-videos` loop through projects videos (.mov) to reduce filesize by resizing to a defined width and by applying h264 mp4 compression.
+
+```bash
+for i in ./_sources/projects/videos/*.mov; do # Loop through the source files
+    ffmpeg # FFmpeg is the tool choosed to manipulate videos
+    -y # Force overwrite if file already exists
+    -i $i # Input file
+    -an # Remove the audio track
+    -vcodec h264 -acodec mp2 # The output codec
+    -vf "scale=min'(800,iw)':-2" # Resize the file to 800px width max, don't upscale if file is smaller, -2 force width and height to be a multiple of 2 (as requested by the codec)
+    ./public/videos/$(basename ${i%.*}).mp4; # Output file (strip the directory with basename and strip the extension with %.* parameter expansion)
+done
+```
+
+- `optim-projects-videos-previews` loop through the optimized projects videos (.mp4) to export only the first frame in jpg. It's useful to generate the HTML5 video poster attribute.
+
+```bash
+for i in ./public/videos/*.mp4; do # Loop through the already optimized video files
+    ffmpeg # FFmpeg is the tool choosed to manipulate videos
+    -y # Force overwrite if file already exists
+    -i $i # Input file
+    -frames:v 1 # Export only the first frame
+    -f image2 # jpg export format
+    ./public/images/projects/$(basename ${i%.*})-preview.jpg; # Output file (strip the directory with basename and strip the extension with %.* parameter expansion), add -preview suffix
+done
+```
 
 ---
 

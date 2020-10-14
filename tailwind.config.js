@@ -1,32 +1,30 @@
 module.exports = {
-    purge: [
-        "./pages/**/*.js",
-        "./components/**/*.js"
-    ],
+    purge: ["./pages/**/*.js", "./components/**/*.js"],
     corePlugins: {
         fontFamily: false // We will use custom fonts instead
     },
     theme: {
-        letterSpacing: { // We need more spacing between letters
+        // We need more spacing between letters
+        letterSpacing: {
             tighter: "-.05em",
             tight: "-.025em",
             normal: "0",
             wide: ".025em",
             wider: ".1em",
-            widest: ".25em",
+            widest: ".25em"
         },
         extend: {
             width: {
-                "400": "400px",
-                "800": "800px"
+                400: "400px",
+                1200: "1200px"
             },
             margin: {
-                "400": "400px",
+                400: "400px"
             }
         }
     },
     variants: {
-        margin: ["responsive", "last", "first"], // We activate the last: and first: utility for margins
+        margin: ["responsive", "last", "first"] // We activate the last: and first: utility for margins
     },
     plugins: [],
     future: {
