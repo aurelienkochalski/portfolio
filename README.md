@@ -35,6 +35,7 @@ This project also implements _web font generation from SVG icons_ and _custom fo
 
 A special effort was made to ensure best performances, accessibiliity and SEO. 
 This website reach the maximum score of 100% on Google Lighthouse :
+
 ![preview](https://raw.githubusercontent.com/aurelienkochalski/portfolio/dev/public/images/lighthouse-score.png)
 
 ## Structure
