@@ -110,6 +110,7 @@ $icon-prefix: 'icon-' !default;
       url('../public/fonts/font-icons.woff') format('woff'), /* Pretty Modern Browsers */
       url('../public/fonts/font-icons.ttf')  format('truetype'), /* Safari, Android, iOS */
       url('../public/fonts/font-icons.svg') format('svg'); /* Legacy iOS */
+   font-display: swap;
   }
 }
 

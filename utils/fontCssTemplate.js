@@ -68,6 +68,7 @@ $icon-prefix: 'icon-' !default;
       url('__RELATIVE_FONT_PATH__/__FAMILY__.woff') format('woff'), /* Pretty Modern Browsers */
       url('__RELATIVE_FONT_PATH__/__FAMILY__.ttf')  format('truetype'), /* Safari, Android, iOS */
       url('__RELATIVE_FONT_PATH__/__FAMILY__.svg') format('svg'); /* Legacy iOS */
+   font-display: swap;
   }
 }
 

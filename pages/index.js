@@ -175,6 +175,9 @@ export default class Home extends React.Component {
                             <img
                                 className="block w-32 h-32 mx-auto mt-8 mb-12 rounded-full sm:w-24 sm:h-24 sm:inline sm:mr-6 sm:float-left sm:my-0 float:none"
                                 src="/images/photo.png"
+                                alt="Photo"
+                                width="96" 
+                                height="96"
                                 data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (0 * animationStaggering)}
                             />
                             <div className="items-baseline max-w-xs mx-auto sm:max-w-none sm:pl-8 grid grid-cols-1 lg:grid-cols-2">

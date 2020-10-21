@@ -1,7 +1,5 @@
 ## TODO
 
-- SEO : meta, google preview
-- SEO : lighthouse audit
 - Add an obfuscator
 - Add brotli compression (with a gzip fallback)
 - Animated triangles

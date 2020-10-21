@@ -26,6 +26,7 @@ export default class ProjectView extends React.Component {
                         key={media}
                         className={mediaClasses}
                         src={"/images/projects/" + media}
+                        alt=""
                     />
                 );
             } else if (media.match(/mp4/g)) {

@@ -33,6 +33,10 @@ The linter `eslint` and the code formatter `prettier` are used to ensure code qu
 
 This project also implements _web font generation from SVG icons_ and _custom font subsetting_ in order to optimize loading time.
 
+A special effort was made to ensure best performances, accessibiliity and SEO. 
+This website reach the maximum score of 100% on Google Lighthouse :
+![preview](https://raw.githubusercontent.com/aurelienkochalski/portfolio/dev/public/images/lighthouse-score.png)
+
 ## Structure
 
 Detail of the project file structure:

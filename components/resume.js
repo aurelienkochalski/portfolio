@@ -46,7 +46,7 @@ export function ResumeBlock(props) {
             className="mt-4 mb-40 sm:mb-24 last:mb-4"
             data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (props.index * animationStaggering)}
         >
-            <h5 className="inline-block pb-3 mb-2 text-xl font-bold text-left uppercase border-b border-white border-solid border-opacity-25">{props.title}</h5>
+            <div className="inline-block pb-3 mb-2 text-xl font-bold text-left uppercase border-b border-white border-solid border-opacity-25">{props.title}</div>
             {skillsWrapper}
         </div>
     );
