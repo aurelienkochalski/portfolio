@@ -45,6 +45,11 @@ class Project extends React.Component {
 
         const project = this.props.data;
 
+        // TODO TEMP : The projects are not translated yet, so for now, we manually retrieve the title, category and description
+        project.title = project.translations.fr.title ? project.translations.fr.title : project.title;
+        project.category = project.translations.fr.category ? project.translations.fr.category : project.category;
+        project.description = project.translations.fr.description ? project.translations.fr.description : project.description;
+
         return (
             <LayoutProject 
                 seotitle={project.title}
