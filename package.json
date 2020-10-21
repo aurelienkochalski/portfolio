@@ -6,9 +6,9 @@
     "license": "UNLICENSED",
     "scripts": {
         "dev": "next dev",
-        "build": "npm run font && next build",
-        "start": "next start",
-        "build-static": "npm run font && npm run optim-projects && next build && next export",
+        "build-static": "npm run clean && npm run build-assets && next build && next export",
+        "clean": "rm -rf .next && rm -rf out && rm -rf public/images/projects/* && rm -rf public/videos/* && rm -rf public/fonts/*",
+        "build-assets": "npm run font && npm run optim-projects",
         "font": "node ./utils/fontOptimizer",
         "optim-projects": "npm run optim-projects-images && npm run optim-projects-previews && npm run optim-projects-videos && npm run optim-projects-videos-previews",
         "optim-projects-images": "magick convert -resize '1000x>' -quality 80 -set filename:f '%t' ./_sources/projects/images/*.* ./public/images/projects/'%[filename:f]'.jpg",

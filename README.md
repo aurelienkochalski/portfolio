@@ -106,12 +106,11 @@ Global tools :
 Description of the npm scripts available in `package.json`:
 
 - `npm run dev`: Starts _Next.js_ in development mode with hot module replacement, error reporting, watch mode, and more). Use it when you add new features to the project.
-- `npm run build`: Creates an optimized production build in the `.next` folder.
-- `npm start`: After building, use this to starts a Next.js server in production mode.
-- `npm run build-static`: Creates a statically generated production build in the `out` folder.
+- `npm run build-static`: Creates an optimized production build in the `.next` folder and generate a static production build in the `out` folder. This tasks will automatically remove old assets with `clean` and rebuild them with `build-assets` in order to bundle up-to-date assets.
+- `npm run clean`: Remove all generated assets (images, videos, fonts), useful for a full rebuild.
+- `npm run build-assets`: Run every assets generation tasks (see below).
 - `npm run font`: Generate the font subset from a list of character.
 - `npm run optim-projects`: Generates optimized versions of projects images, videos and previews found in the `_sources/projects/` directory. (See the next section for detailed explanation)
-  _NOTE_ : The `build-static` will automatically call `font` and `optim-projects` in order to bundle up-to-date assets.
 
 ## Other tasks
 
