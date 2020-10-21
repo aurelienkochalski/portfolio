@@ -3,7 +3,7 @@ import { getAll } from "../middleware/database";
 import Head from "next/head";
 import ReactTooltip from "react-tooltip";
 import { splitArray, buildTranslations } from "../utils/tools";
-import Layout, { siteTitle } from "../components/layout";
+import LayoutHome from "../components/layoutHome";
 import SectionBlock from "../components/sectionBlock";
 import SectionTitle from "../components/sectionTitle";
 import ProjectCard from "../components/projectCard";
@@ -130,11 +130,7 @@ export default class Home extends React.Component {
         });
 
         return (
-            <Layout>
-
-                <Head>
-                    <title>{siteTitle}</title>
-                </Head>
+            <LayoutHome>
 
                 <div className="container mx-auto">
 
@@ -200,7 +196,7 @@ export default class Home extends React.Component {
 
                 <ReactTooltip place="top" effect="solid" className="tooltip" uuid="tooltip"/>
 
-            </Layout>
+            </LayoutHome>
         );
     }
 }

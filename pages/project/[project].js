@@ -1,4 +1,5 @@
 import { withRouter } from "next/router";
+import LayoutProject from "../../components/layoutProject";
 import ProjectView from "../../components/projectView";
 import {getProjects, getProject} from "../../middleware/database";
 
@@ -45,7 +46,11 @@ class Project extends React.Component {
         const project = this.props.data;
 
         return (
-            <>
+            <LayoutProject 
+                seotitle={project.title}
+                seodescription={project.description}
+            >
+
                 <ProjectView
                     title={project.title}
                     category={project.category}
@@ -54,7 +59,8 @@ class Project extends React.Component {
                     authors={project.copyright}
                     gallery={project.images}
                 />
-            </>
+                
+            </LayoutProject>
         );
     }
 }
