@@ -9,20 +9,23 @@ module.exports = {
     },
     webpack: (config, options) => {
 
-        config.plugins.push(
-            new IconfontPlugin({
-                src: "_sources/font_svg",
-                family: "font-icons",
-                dest: {
-                    font: "public/fonts/[family].[type]",
-                    css: "styles/[family].scss"
-                },
-                watch: {
-                    pattern: "_sources/font_svg/*.svg"
-                },
-                cssTemplate: customCssTemplate
-            })
-        );
+        // We compile SVG font only on dev
+        if (options.dev) {
+            config.plugins.push(
+                new IconfontPlugin({
+                    src: "_sources/font_svg",
+                    family: "font-icons",
+                    dest: {
+                        font: "public/fonts/[family].[type]",
+                        css: "styles/[family].scss"
+                    },
+                    watch: {
+                        pattern: "_sources/font_svg/*.svg"
+                    },
+                    cssTemplate: customCssTemplate
+                })
+            );
+        }
 
         return config;
     }
