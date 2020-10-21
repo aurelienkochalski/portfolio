@@ -168,6 +168,7 @@ done
 1. `git clone https://github.com/aurelienkochalski/portfolio.git` (clone this repository)
 2. `cd portfolio` (change to the freshly created folder)
 3. `npm install` (to install all project dependencies)
+4. Create the folder `_sources/font_svg/` at the root and put at least one SVG inside in order to generate a font.
 
 ### 3. Configure the database
 
