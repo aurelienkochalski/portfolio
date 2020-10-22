@@ -1,18 +1,21 @@
 @font-face {
     font-family: "Custom";
-    src: url("/fonts/custom-medium.ttf") format("truetype");
+    src: url("/fonts/custom-medium.woff") format("woff"),
+         url("/fonts/custom-medium.ttf") format("truetype");
     font-weight: normal;
     font-display: swap;
 }
 @font-face {
     font-family: "Custom";
-    src: url("/fonts/custom-light.ttf") format("truetype");
+    src: url("/fonts/custom-light.woff") format("woff"),
+         url("/fonts/custom-light.ttf") format("truetype");
     font-weight: 100;
     font-display: swap;
 }
 @font-face {
     font-family: "Custom";
-    src: url("/fonts/custom-black.ttf") format("truetype");
+    src: url("/fonts/custom-black.woff") format("woff"),
+         url("/fonts/custom-black.ttf") format("truetype");
     font-weight: bold;
     font-display: swap;
 }
