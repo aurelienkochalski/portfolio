@@ -84,7 +84,7 @@ export default class ProjectView extends React.Component {
 
                     <p
                         className={classNames(
-                            "py-8 text-justify whitespace-pre-line",
+                            "py-8 whitespace-pre-line justify-hyphens",
                             styles.description
                         )}
                         dangerouslySetInnerHTML={{

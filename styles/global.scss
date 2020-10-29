@@ -36,6 +36,11 @@ p > a {
     word-break: break-all;
 }
 
+.justify-hyphens {
+    text-align: justify;
+    hyphens: auto;
+}
+
 // TODO TEMP : it doesn't works in the sectionTitle module css (because the aos-animate class is added later, at runtime)
 section .aos-animate[class*="sectionTitle"] {
     &::before {

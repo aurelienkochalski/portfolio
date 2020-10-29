@@ -142,7 +142,7 @@ export default class Home extends React.Component {
                             <h2 className="pt-2 text-sm tracking-wider text-center uppercase sm:pt-0 sm:text-left sm:text-2xl">{infos.job}</h2>
                         </CSSTransition>
                         <CSSTransition in={true} key={infos.description} timeout={animationDelayBeforeStarting + 2 * animationStaggering}>
-                            <p className="mt-10 text-lg leading-relaxed text-justify">{infos.description}</p>
+                            <p className="mt-10 text-lg leading-relaxed justify-hyphens">{infos.description}</p>
                         </CSSTransition>
                     </TransitionGroup>
 
@@ -165,7 +165,9 @@ export default class Home extends React.Component {
 
                         <SectionBlock>
                             <SectionTitle text={infos.sectionAbout} />
-                            <div data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (0 * animationStaggering)}>
+                            <div 
+                                className="justify-hyphens" 
+                                data-aos='fade-up' data-aos-delay={animationDelayBeforeStarting + (0 * animationStaggering)}>
                                 {aboutList}
                             </div>
                         </SectionBlock>
