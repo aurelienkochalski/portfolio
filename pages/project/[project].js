@@ -2,6 +2,7 @@ import { withRouter } from "next/router";
 import LayoutProject from "../../components/layoutProject";
 import ProjectView from "../../components/projectView";
 import {getProjects, getProject} from "../../middleware/database";
+import Head from "next/head";
 
 // NOTE : For this page, we are using the dynamic routing functionnality of nextjs
 // NOTE : In dev, those pages will trigger a 404 if refreshed or accessed directly (by uri). That's because nextjs default server does not handle dynamic routing data forwarding. But it's ok in prod because the data are pre-fetched.
@@ -51,21 +52,27 @@ class Project extends React.Component {
         project.description = project.translations.fr.description ? project.translations.fr.description : project.description;
 
         return (
-            <LayoutProject 
-                seotitle={project.title}
-                seodescription={project.description}
-            >
+            <>
+                <Head>
+                    {/* We specifically ask to crawlers to not indexing the projects pages */}
+                    <meta name="robots" content="noindex" />
+                </Head>
+                <LayoutProject 
+                    seotitle={project.title}
+                    seodescription={project.description}
+                >
 
-                <ProjectView
-                    title={project.title}
-                    category={project.category}
-                    description={project.description}
-                    technologies={project.technologies.join(" / ")}
-                    authors={project.copyright}
-                    gallery={project.images}
-                />
-                
-            </LayoutProject>
+                    <ProjectView
+                        title={project.title}
+                        category={project.category}
+                        description={project.description}
+                        technologies={project.technologies.join(" / ")}
+                        authors={project.copyright}
+                        gallery={project.images}
+                    />
+                    
+                </LayoutProject>
+            </>
         );
     }
 }
