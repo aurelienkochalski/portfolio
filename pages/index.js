@@ -98,6 +98,7 @@ export default class Home extends React.Component {
 
         const aboutList = about.map(function (item, index) {
             return <AboutItem
+                key={index}
                 index={index}
                 text={item}
             />;
