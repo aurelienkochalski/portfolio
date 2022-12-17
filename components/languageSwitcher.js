@@ -66,12 +66,12 @@ export class LanguageItem extends React.Component {
         );
 
         return (
-            <a
+            <button
                 key={this.props.language}
                 onClick={() => this.props.onLanguageChange(this.props.language)}
                 className={classes}>
                 {this.props.language}
-            </a>
+            </button>
         );
     }
 }
