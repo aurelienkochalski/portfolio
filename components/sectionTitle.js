@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./sectionTitle.module.scss";
 
 export default function SectionTitle(props) {

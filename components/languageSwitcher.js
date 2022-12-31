@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./languageSwitcher.module.scss";
 
 export default class LanguageSwitcher extends React.Component {

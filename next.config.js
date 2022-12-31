@@ -1,11 +1,17 @@
 const IconfontPlugin = require("iconfont-plugin-webpack");
 const customCssTemplate = require("./utils/fontCssTemplate.js");
 
+
 module.exports = {
-    //assetPrefix: ".", // Could be used to fix wrong assets path when using static html generation
-    //basePath: "/folder", // Could be needed if we deploy under a sub-path of a domain
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
     devIndicators: {
         autoPrerender: true,
+    },
+    images: {
+        formats: ['image/webp'],
+        unoptimized: true,
     },
     webpack: (config, options) => {
 

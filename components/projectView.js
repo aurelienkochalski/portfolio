@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./projectView.module.scss";
 
 import Link from "next/link";
@@ -68,9 +69,9 @@ export default class ProjectView extends React.Component {
                     )}
                 >
                     <div className="flex flex-row">
-                        <Link href="/" scroll={false}>
-                            {/* `scroll` set to false allows us to restore the scroll position when returning to the homepage */}
-                            <a className="pr-6 text-4xl">←</a>
+                        {/* `scroll` set to false allows us to restore the scroll position when returning to the homepage */}
+                        <Link href="/" scroll={false} className="pr-6 text-4xl">
+                            ←
                         </Link>
                         <div className="block w-full">
                             <h1 className="text-lg font-bold uppercase">

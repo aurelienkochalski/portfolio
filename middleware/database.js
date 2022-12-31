@@ -1,3 +1,4 @@
+import React from "react";
 import { MongoClient } from "mongodb";
 import {DB_URI, DB_NAME} from "../config";
 

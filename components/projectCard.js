@@ -1,6 +1,8 @@
+import React from "react";
 import styles from "./projectCard.module.scss";
 
 import Link from "next/link";
+import Image from "next/image";
 import { sanitizeTechnology } from "../utils/tools";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -52,53 +54,53 @@ export default class ProjectCard extends React.Component {
                 <div className="relative flex flex-col h-full overflow-hidden">
                     {/* TODO : it seems that next prefetch (activated only in prod) don't prefetch the pictures... */}
                     <Link
+                        className="flex-auto px-6 py-5"
                         href="/project/[project]"
                         as={`/project/${this.props.project.slug}`}
                     >
-                        <a className="flex-auto px-6 py-5">
-                            {/* Project title and subtitle */}
-                            <div className="">
-                                <TransitionGroup>
-                                    <CSSTransition
-                                        in={true}
-                                        key={this.props.project.title}
-                                        timeout={0 + this.props.index * 50}
-                                    >
-                                        <div className="text-lg font-bold uppercase">
-                                            {this.props.project.title}
-                                        </div>
-                                    </CSSTransition>
-                                    <CSSTransition
-                                        in={true}
-                                        key={this.props.project.category}
-                                        timeout={100 + this.props.index * 50}
-                                    >
-                                        <p className="text-sm text-gray-400">
-                                            {this.props.project.category}
-                                        </p>
-                                    </CSSTransition>
-                                </TransitionGroup>
-                            </div>
-
-                            {/* Project preview image */}
-                            <div
-                                className={classNames(
-                                    styles.preview,
-                                    "absolute overflow-hidden w-full h-full top-0 left-0"
-                                )}
-                                style={{
-                                    backgroundImage:
-                                        "url(/images/projects/" +
-                                        this.props.project.preview +
-                                        ")",
-                                }}
-                            ></div>
-                        </a>
+                        {/* Project title and subtitle */}
+                        <div className="">
+                            <TransitionGroup>
+                                <CSSTransition
+                                    in={true}
+                                    key={this.props.project.title}
+                                    timeout={0 + this.props.index * 50}
+                                >
+                                    <div className="text-lg font-bold uppercase">
+                                        {this.props.project.title}
+                                    </div>
+                                </CSSTransition>
+                                <CSSTransition
+                                    in={true}
+                                    key={this.props.project.category}
+                                    timeout={100 + this.props.index * 50}
+                                >
+                                    <p className="text-sm text-gray-400">
+                                        {this.props.project.category}
+                                    </p>
+                                </CSSTransition>
+                            </TransitionGroup>
+                        </div>
                     </Link>
 
                     {/* Project technologies list */}
                     <div className="flex-none px-5 pb-4">
                         {technologiesIcons}
+                    </div>
+
+                    {/* Project preview image */}
+                    <div
+                        className={classNames(
+                            styles.preview,
+                            "absolute overflow-hidden w-full h-full top-0 left-0"
+                        )}
+                    >
+                        <Image
+                            src={"/images/projects/" + this.props.project.preview}
+                            alt={this.props.project.title}
+                            width="400"
+                            height="533"
+                        />
                     </div>
                 </div>
             </div>
