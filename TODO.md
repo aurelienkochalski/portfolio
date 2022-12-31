@@ -1,7 +1,13 @@
 ## TODO
-
-- Add an obfuscator
+- fix eslint errors and (remove `ignoreDuringBuilds` in the config)
+- Fix lighthouse issues
+    - activate caching policies https://nextjs.org/docs/going-to-production#caching > switch to vercel
+    - use http2 instead of http1.1 > nginx server
+    - optimize pictures locally (remove `unoptimized:true` in the config)
+- Add json-ld on home + projetcs (https://www.fabian-keller.de/blog/adding-json-ld-to-a-personal-website/)
+- Optimize SEO (hn, meta)
 - Add brotli compression (with a gzip fallback)
+- Add an obfuscator
 - Animated triangles
 - Add unit tests
 - Add e2e tests
